@@ -2,8 +2,7 @@ import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Cadastro from '../pages/Cadastro';
-import Login from '../pages/Login';
+import Tarefas from '../pages/Tarefas'
 
 
 const App = createBottomTabNavigator();
@@ -11,7 +10,7 @@ const App = createBottomTabNavigator();
 const AppRoutes = () => {
   return (
     <App.Navigator>
-      
+      <App.Screen name="Tarefas" component={Tarefas} />
     </App.Navigator>
   )
 }
