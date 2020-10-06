@@ -11,3 +11,5 @@ yarn add @react-navigation/native
 yarn add @react-navigation/stack
 
 yarn add @expo/vector-icons
+
+yarn add @react-navigation/bottom-tabs
