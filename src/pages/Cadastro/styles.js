@@ -3,26 +3,28 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
     padding: 20px;
     flex: 1;
-    background-color: #fff;
+    background-color: #B4B9BD;
     align-items: center;
-    justify-content: center;
+   
 `;
 
 export const Image = styled.Image` 
-    margin-top: 30px;
     width: 300px;
-    height: 300px;
+    height: 200px;
 `;
 
 export const Title = styled.Text`
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 30px;
     font-weight: bold;
     color: #3a3a3a;
+    margin-bottom: 20%;
     
 `;
 
 export const Input = styled.TextInput`
+    margin-top: 10px;
+    padding: 10px;
     width: 300px;
     height: 40px;
     background-color: #fff;
@@ -32,10 +34,13 @@ export const Input = styled.TextInput`
 `;
 
 export const Button = styled.TouchableOpacity`
-    width: 200px;
+    width: 60%;
     height: 40px;
-    background-color: #3a5b3a;
+    margin-top: 30%;
+    background-color: #279FFC;
     border-radius: 5px;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ButtonText = styled.Text`
