@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const Container = styled.view`
+export const Container = styled.View`
     padding: 20px;
     flex: 1;
     background-color: #fff;
