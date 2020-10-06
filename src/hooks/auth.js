@@ -60,7 +60,7 @@ import React, {
     const signOut = useCallback(async () => {
       await AsyncStorage.removeItem('@JONSONS:user');
   
-      setData({});
+      setData({}); 
     }, []);
   
     return (
