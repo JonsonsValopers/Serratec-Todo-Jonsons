@@ -1299,6 +1299,7 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/picker/-/picker-1.8.0.tgz#32425321af1e29e3da882fbd627a71ea142c75e4"
   integrity sha512-aS506wjynNzKDZjynlDasbc665GKGHdhrCob9KdOprPFlE+zMnoR3k0Ce0OkIuGHcY/GMVvQqTc+LYVm2UOmbg==
 
+<<<<<<< HEAD
 "@react-navigation/core@^3.7.8":
   version "3.7.8"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.7.8.tgz#9c2c191dea8d97b2644f18917d885d4943cb8bff"
@@ -1308,6 +1309,15 @@
     path-to-regexp "^1.8.0"
     query-string "^6.13.1"
     react-is "^16.13.0"
+=======
+"@react-navigation/bottom-tabs@^5.9.1":
+  version "5.9.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.9.1.tgz#68d50e301d06f97f83a785f5acdf2c50e9600053"
+  integrity sha512-bTzMTjqsb6Q64INZ5qeCzky29KmzDIBbYgMsy5x5vXEIxgKUFmE2aOTzFvR9UxoKz/Zn8ek8WSFi975qvHaarg==
+  dependencies:
+    color "^3.1.2"
+    react-native-iphone-x-helper "^1.2.1"
+>>>>>>> 8c86cf08b424ba00f673b502c8972bd8f8bcb29e
 
 "@react-navigation/core@^5.12.4":
   version "5.12.4"
