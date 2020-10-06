@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, Alert } from 'react-native';
+import { Text, Alert, KeyboardAvoidingView } from 'react-native';
 
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
@@ -50,6 +50,7 @@ const Cadastro = () => {
         <Container>
             <Image source={logoImg} resizeMethod="resize"/>
             <Title> Cadastro </Title>
+            <KeyboardAvoidingView  behavior="position" enabled>
             <Input 
             value={email}
             onChangeText={text => setEmail(text)}
@@ -62,9 +63,10 @@ const Cadastro = () => {
             />
             <Button
                 onPress={() => cadastro()}
-            >
+                >
                 <ButtonText>Cadastrar</ButtonText>
             </Button>
+                </KeyboardAvoidingView>
             <Link
                 onPress={() => navigation.navigate(Login)}
             >Faça o seu Login</Link>

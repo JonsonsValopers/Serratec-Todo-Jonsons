@@ -20,7 +20,7 @@ import React, {
         const user = await AsyncStorage.getItem('@JONSONS:user');
         console.log("AuthProvider user", user);
   
-        if(user){
+        if(!!user){
           setData(JSON.parse(user))
         }
       }
