@@ -30,7 +30,6 @@ export const Input = styled.TextInput`
     background-color: #fff;
     color: #3a3a3a;
     border-radius: 5px;
-
 `;
 
 export const Button = styled.TouchableOpacity`

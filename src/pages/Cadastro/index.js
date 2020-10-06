@@ -1,30 +1,31 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, Alert, KeyboardAvoidingView } from 'react-native';
+import { TextInput } from 'react-native';
 
 import api from '../../services/api';
 import { useAuth } from '../../hooks/auth';
 import logoImg from '../../assets/Logo.png';
 import Login from '../Login'
 
-import { AntDesign } from '@expo/vector-icons';
+// import { AntDesign } from '@expo/vector-icons';
 
 import { Container, Title, Input, Button, ButtonText, Link, Image } from './styles';
 
 const Cadastro = () => {
     const { signUp } = useAuth();
     const navigation = useNavigation();
+
     const [email, setEmail] = useState('');
-    const [password, setpassword] = useState('');
+    const [password, setPassword] = useState('');
     // const [erroCampo, setErroCampo] = useState('');
 
-    const cadastro = async () => {
+    const cadastro = async () => { 
         try {
             console.log("submit", email, password);
             signUp({ email: email, password: password });
             console.log('cadastro sucess');
             setEmail('');
-            setpassword('');
+            setPassword('');
         } catch (error) {
             console.log('cadastro: ', error);
         }
@@ -50,36 +51,87 @@ const Cadastro = () => {
         <Container>
             <Image source={logoImg} resizeMethod="resize"/>
             <Title> Cadastro </Title>
-            <KeyboardAvoidingView  behavior="position" enabled>
+
             <Input 
-            value={email}
-            onChangeText={text => setEmail(text)}
-            placeholder="E-mail"
+                value={email}
+                onChangeText={text => setEmail(text)}
+                placeholder="E-mail"
             />
+
             <Input
-            value={password}
-            onChangeText={text => setpassword(text)}
-            placeholder="password"
+                value={password}
+                onChangeText={text => setPassword(text)}
+                placeholder="password"
             />
+            
             <Button
                 onPress={() => cadastro()}
-                >
+            >
                 <ButtonText>Cadastrar</ButtonText>
             </Button>
-                </KeyboardAvoidingView>
+            
             <Link
                 onPress={() => navigation.navigate(Login)}
             >Faça o seu Login</Link>
         </Container>
         
     
-    )
-
-    function alerta() {
-        Alert.alert("Ae familia", "É hoje clã", [
-            {text: "vamo time", onPress: () => console.log("ok tudo certo") }
-        ])
-    }
+    )    
 }
+
+/*
+ const umaOpcap = () => {
+    Alert.alert('Sucesso!', 'Login realizado com sucesso!', [{
+        text: 'ok'}])
+  }
+
+
+  const duasOpcoes = () => {
+    //function to make two option alert
+    Alert.alert(
+      //title
+      'Hello',
+      //body
+      'I am two option alert. Do you want to cancel me ?',
+      [
+        {
+          text: 'Yes',
+          onPress: () => console.log('Yes Pressed')
+        },
+        {
+          text: 'No',
+          onPress: () => console.log('No Pressed'), style: 'cancel'
+        },
+      ],
+      {cancelable: false},
+      //clicking out side of alert will not cancel
+    );
+  };
+
+  const tresOpcoes = () => {
+    //function to make three option alert
+    Alert.alert(
+      //title
+      'Hello',
+      //body
+      'I am three option alert. Do you want to cancel me ?',
+      [
+        {
+          text: 'May be',
+          onPress: () => console.log('May be Pressed')
+        },
+        {
+          text: 'Yes', onPress: () => console.log('Yes Pressed')
+        },
+        {
+          text: 'OK', onPress: () => console.log('OK Pressed')
+        },
+      ],
+      {cancelable: true},
+    );
+  };
+
+
+*/
 
 export default Cadastro;
