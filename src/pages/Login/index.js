@@ -4,8 +4,7 @@ import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 
 
-import { useNavigation } from '@react-navigation/native';
-import Cadastro from '../Cadastro'
+
 
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
@@ -20,26 +19,13 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [carregando, setCarregando] = useState(false);
-    const [buscaUsuarios, setBuscaUsuarios] = useState([]);
-    const navigation = useNavigation();
 
-    const loadUsuarios = useCallback(
-        async () => {
-            const resposta = await api.get('/usuarios');
-            // console.log(resposta.data);
-            setBuscaUsuarios(resposta.data);
-
-        }, [],
-    );
-    useEffect(() => {
-        loadUsuarios();
-    }, [loadUsuarios]);
 
 
     const login = async () => {
         try {
             signIn({ email: email, password: password });
-            // console.log("Login: ", email + password);
+            console.log("Login: ", email + password);
         } catch (error) {
             console.log("login: ", error)
         }
@@ -72,9 +58,7 @@ const Login = () => {
             </ButtonSubmit>
 
 
-            <ButtonSignup
-                onPress={() => navigation.navigate(Cadastro)}
-            >
+            <ButtonSignup>
                 {carregando ? (
                     <ActivityIndicator color="#fff" />
                 ) : (
