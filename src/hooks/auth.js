@@ -33,7 +33,8 @@ import React, {
             
             try {
                 const response = await api.get('usuarios');
-                let loginAchado = response.find(user => user.email === email && user.password === password);
+                let loginAchado = response.data.find(user => user.email === email && user.password === password);
+                console.log(loginAchado);
                 if(!loginAchado) return;
                 setData(loginAchado);
                 await AsyncStorage.setItem('@JONSONS:user', JSON.stringify(loginAchado));
@@ -50,7 +51,7 @@ import React, {
           setData({ email, password });
           console.log(data);
           await api.post('usuarios', data);
-            await AsyncStorage.setItem('@JONSONS:user', JSON.stringify({ email, password }));
+          await AsyncStorage.setItem('@JONSONS:user', JSON.stringify({ email, password }));
 
         }catch(error){
             console.log(error);
