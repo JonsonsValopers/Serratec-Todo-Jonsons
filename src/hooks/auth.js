@@ -47,9 +47,10 @@ import React, {
         async ({ email, password }) => {
 
         try{
-            await api.post(JSON.stringify({email, password}));
+          setData({ email, password });
+          console.log(data);
+          await api.post('usuarios', data);
             await AsyncStorage.setItem('@JONSONS:user', JSON.stringify({ email, password }));
-            setData({ email, password });
 
         }catch(error){
             console.log(error);
