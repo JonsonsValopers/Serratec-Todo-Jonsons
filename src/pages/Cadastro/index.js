@@ -12,7 +12,7 @@ const Cadastro = () => {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [erroCampo, setErroCampo] = useState('');
+    // const [erroCampo, setErroCampo] = useState('');
 
     const cadastro = async () => {
         try {
