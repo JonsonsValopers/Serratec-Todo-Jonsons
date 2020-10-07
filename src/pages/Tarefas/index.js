@@ -29,7 +29,7 @@ const Tarefas = () => {
                 console.log(user);
                 if(!user) return;
                 setUsuario(JSON.parse(user));
-                buscarUsuario();
+                buscarUsuario(JSON.parse(user));
             } catch(error){
                 console.log(error);
             }
@@ -37,9 +37,9 @@ const Tarefas = () => {
     )
 
     const buscarUsuario = useCallback (
-        async () => {
+        async (user) => {
             try {
-                const resposta = await api.get(`usuarios/${usuario.id}?_embed=tarefas`);
+                const resposta = await api.get(`usuarios/${user.id}?_embed=tarefas`);
                 console.log(resposta.data.tarefas);
                 setTarefas(resposta.data.tarefas);
             } catch (error) {

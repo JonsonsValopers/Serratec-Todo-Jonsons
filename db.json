@@ -36,22 +36,6 @@
     {
       "descricao": "Taks",
       "id": 5
-    },
-    {
-      "descricao": "teste",
-      "id": 6
-    },
-    {
-      "descricao": "Paulo Guets",
-      "id": 7
-    },
-    {
-      "descricao": "Paulo GUets",
-      "id": 8
-    },
-    {
-      "descricao": "Gui não entrou",
-      "id": 9
     }
   ],
   "tarefas": [
@@ -64,7 +48,7 @@
     },
     {
       "descricao": "Aprender react native",
-      "concluido": false,
+      "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
       "id": 2
