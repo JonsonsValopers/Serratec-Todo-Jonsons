@@ -1,9 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native'
+import { Text, Button } from 'react-native';
+
+import { useAuth } from '../../hooks/auth';
 
 const Tarefas = () => {
+    const { signOut } = useAuth();
     return(
-        <Text>Olá Minhas tarefas</Text>
+        <>
+            <Text>Olá Minhas tarefas</Text>
+            <Button title="Logout" onPress={() => signOut()}/>
+        </>
     )
 }
 
