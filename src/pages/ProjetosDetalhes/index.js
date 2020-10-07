@@ -4,7 +4,7 @@ import Tarefas from '../Tarefas';
 
 import{
   Container,
-  Tarefas,
+  // Tarefas,
   Tarefa,
   TarefaDescricao
 } from './styles';
@@ -35,13 +35,13 @@ const ProjetosDatalhes = () => {
 
     useEffect(() => {
       pegarTarefas();
-      pegarTarefasId();
-    },[pegarTarefas, pegarTarefasId]);
+      // pegarTarefasId();
+    },[pegarTarefas]);
 
     return(
       <Container>
         <Tarefas>
-          {tarefas.map(task => (
+          {tarefas.map(tarefa => (
             <Tarefa key={tarefa.id}>
               <TarefaDescricao>{tarefa.descricao}</TarefaDescricao>
             </Tarefa>
