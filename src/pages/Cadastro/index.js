@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
+import { Alert } from 'react-native';
+
 import { useAuth } from '../../hooks/auth';
 import logoImg from '../../assets/Logo.png';
 import Login from '../Login'
@@ -13,25 +15,47 @@ const Cadastro = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const [emailErrado, setEmailErrado] = useState('');
-    // const [senhaErrada, setSenhaErrada] = useState('');
+    const [emailErrado, setEmailErrado] = useState('');
+    const [senhaErrada, setSenhaErrada] = useState('');
 
     const cadastro = async () => { 
 
-     
+        if(!email) {
+            setEmailErrado("Preencha esse campo")
+            return;
+        }
+
+        if(!password) {
+            setSenhaErrada("Preencha esse campo");
+            return;
+        }
+
+        let regexEmail = /^([\w\d^\s]{3,})[@][a-z0-9]{2,10}[.][a-z]{2,6}$/g;
+
+        if(!regexEmail.test(email)) {
+            setSenhaErrada("E-mail não informado corretamente");
+            return;
+        }
+
+        let regexpassword = /^[a-z0-9\w\d^\s]{8,20}$/g;
+
+        if(!regexpassword.test(password)) {
+            setSenhaErrada("Sua senha precisa ter mais caracteres!");
+            return;
+        }   
 
       try {
 
-          console.log("submit", email, password);
-          signUp({ email: email, password: password });
+        console.log("submit", email, password);
+        signUp({ email: email, password: password });
 
-          console.log('cadastro sucess');
+        console.log('cadastro sucess');
 
-          Alert.alert('Sucesso!', 'Cadastro realizado com sucesso!', [{
-            text: 'ok'}])
+        Alert.alert('Sucesso!', 'Cadastro realizado com sucesso!', [{
+        text: 'ok'}])
 
-          setEmail('');
-          setPassword('');
+        setEmail('');
+        setPassword('');
 
       } catch (error) {
 
@@ -41,38 +65,6 @@ const Cadastro = () => {
           console.log('cadastro: ', error);
       }
     }
-
-    // const verificarCampoEmail = () => {
-      
-    //   if(!password) {
-    //     setEmailErrado("Preencha esse campo")
-    //     return;
-    //   } 
-
-    //   let regexEmail = /^|([\w\d^\s]{2,}|)[@][a-z0-9]{2,10}[.][a-z]{3,6}$/g;
-
-    //   if(!regexEmail.test(email)) {
-    //      setEmailErrado("E-mail não informado corretamente");
-    //      return;
-    //   }
-      
-    // }
-
-    // const verificarCampoSenha = () => {
-
-    //   if(!password) {
-    //     setSenhaErrada("Preencha esse campo");
-    //     return;
-    //   }
-      
-    //   let regexpassword = /^[a-z0-9\w\d^\s]{8,20}$/g;
-
-    //   if(!regexpassword.test(password)) {
-    //       setSenhaErrada("E-mail não informado corretamente");
-    //       return;
-    //   }     
-
-    // }
 
     return(
         <Container>
@@ -85,19 +77,20 @@ const Cadastro = () => {
                 placeholder="E-mail"
             />
             
-            {/* {emailErrado && 
+            {emailErrado && 
                 <TextErro>{emailErrado}</TextErro>
-            } */}
+            }
 
             <Input
                 value={password}
                 onChangeText={text => setPassword(text)}
                 placeholder="password"
+                secureTextEntry={true}
             />
 
-            {/* { senhaErrada &&
+            { senhaErrada &&
                 <TextErro>{senhaErrada}</TextErro>
-            } */}
+            }
             
             <Button
                 onPress={() => cadastro()}

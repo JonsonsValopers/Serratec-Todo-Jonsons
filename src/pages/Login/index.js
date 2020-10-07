@@ -3,9 +3,6 @@ import { ActivityIndicator } from 'react-native';
 import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 
-
-
-
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
 import Cadastro from '../Cadastro'
@@ -30,6 +27,7 @@ const Login = () => {
             console.log("login: ", error)
         }
     }
+    
     return (
         <Container>
             <Imagem source={logo} />
