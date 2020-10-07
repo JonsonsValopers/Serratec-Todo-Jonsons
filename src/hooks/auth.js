@@ -40,8 +40,10 @@ import React, {
                 console.log("user", user);
             
                 if(user.length > 0){
-                  await AsyncStorage.setItem('@TODO:user', JSON.stringify(user[0]));
                   setData({ user: user[0] });
+                  await AsyncStorage.setItem('@JONSONS:user', JSON.stringify(user[0]));
+                  const resposta = await AsyncStorage.getItem('@JONSONS:user');
+                  console.log(resposta);
                 }else{
                   throw new Error('Usuário ou senha inválido');
                 }
