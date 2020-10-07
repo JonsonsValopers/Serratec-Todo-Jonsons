@@ -4,12 +4,26 @@
       "email": "diego@domob.me",
       "password": "123123",
       "id": 1
+    },
+    {
+      "email": "gabyologia6@gamil.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "email": "cicero@cicero.com",
+      "password": "123",
+      "id": 3
     }
   ],
   "projetos": [
     {
       "descricao": "Projeto Final",
       "id": 1
+    },
+    {
+      "descricao": "Teste",
+      "id": 2
     }
   ],
   "tarefas": [
