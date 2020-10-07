@@ -13,7 +13,7 @@ const AppRoutes = () => {
   return (
     <App.Navigator>
       <App.Screen name="Projetos" component={Projetos} />
-      <App.Screen name="Detalhes" component={ProjetosDatalhes} />
+      <App.Screen name="ProjetosDetalhes" component={ProjetosDatalhes} />
       <App.Screen name="Tarefas" component={Tarefas} />
     </App.Navigator>
   )

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+
 import { useNavigation } from '@react-navigation/native';
 
 import ProjetosDatalhes from '../ProjetosDetalhes';
@@ -57,7 +58,7 @@ const Projetos = () => {
                 const response = await api.post(`/projetos`, params)
                 console.log("Adcionando projeto",response)
                 loadProjects();
-                setNewProjects();
+                setNewProjects("");
 
             } catch (error) {
                 console.log("Error na parte de criar um novo projeto", error);
@@ -77,7 +78,7 @@ const Projetos = () => {
 
             const response = await api.put(`tarefas/${task.id}`, params);
 
-            console.log("As Tarefas foram concluidas");
+            console.log("As Tarefas foram concluidas",response);
 
             loadProjects();
         },[loadProjects],
@@ -124,17 +125,24 @@ const Projetos = () => {
                         </ProjectText>
 
                         <ProjectAction>
-                           <MaterialCommunityIcons 
-                           name="delete-outline"
-                           color="#3a3a3a"
-                           size={22}
-                           onPress={()=> removeProjects(project)}
-                           />
-                        </ProjectAction>
-                    </Project>
-                ))}
-            </ContainerProjeto>
-        </Container>
+                            
+                        <AntDesign 
+                        name="edit" 
+                        size={22} 
+                        color="#005bb2" 
+                        />
+
+                        <MaterialCommunityIcons 
+                        name="delete-outline"
+                        color="#005bb2"
+                        size={22}
+                        onPress={()=> removeProjects(project)}
+                        />
+                    </ProjectAction>
+                </Project>
+            ))}
+        </ContainerProjeto>
+    </Container>
     )
 }
 export default Projetos;

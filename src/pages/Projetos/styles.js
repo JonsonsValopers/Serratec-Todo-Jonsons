@@ -50,7 +50,9 @@ export const Project = styled.View`
    
 `;
 export const ProjectText = styled.Text``;
-export const ProjectAction = styled.View``;
+export const ProjectAction = styled.View`
+     flex-direction: row;
+`;
 
 export const ErroMessage = styled.Text``;
 
