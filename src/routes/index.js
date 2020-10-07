@@ -10,11 +10,11 @@ import { useAuth } from '../hooks/auth';
 const Stack = createStackNavigator();
 
 const RootNavigator = () => {
-    const { data } = useAuth();
+    const { user } = useAuth();
 
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>      
-        <Stack.Screen name="Root" component={ !data ? AuthRoutes:AppRoutes } />
+        <Stack.Screen name="Root" component={ user ? AppRoutes : AuthRoutes} />
         </Stack.Navigator>
     )
 }
