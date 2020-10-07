@@ -2,14 +2,16 @@ import React, { useState, useEffect, useCallback } from 'react';
 import api from '../../services/api';
 import Tarefas from '../Tarefas';
 
+import BotaoConcluido from '../../components/BotaoConcluido'
+
 import{
   Container,
-  // Tarefas,
+  Tarefas_,
   Tarefa,
-  TarefaDescricao
+  TarefaText
 } from './styles';
 
-const ProjetosDatalhes = () => {
+const ProjetosDetalhes = () => {
   const [tarefas, setTarefas] = useState([]);
 
     
@@ -40,17 +42,17 @@ const ProjetosDatalhes = () => {
 
     return(
       <Container>
-        <Tarefas>
+        <Tarefas_>
           {tarefas.map(tarefa => (
             <Tarefa key={tarefa.id}>
-              <TarefaDescricao>{tarefa.descricao}</TarefaDescricao>
+              <TarefaText>{tarefa.descricao}</TarefaText>
             </Tarefa>
           ))
           }
-        </Tarefas>
+        </Tarefas_>
       </Container>
       
     )
 }
 
-export default ProjetosDatalhes;
+export default ProjetosDetalhes;
