@@ -41,3 +41,5 @@ const BotaoConcluido = (props) => {
         </>
     )
 }
+
+export default BotaoConcluido;
