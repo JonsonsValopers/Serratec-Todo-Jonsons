@@ -9,6 +9,11 @@
       "email": "gabyologia6@gamil.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "email": "cicero@cicero.com",
+      "password": "123",
+      "id": 3
     }
   ],
   "projetos": [

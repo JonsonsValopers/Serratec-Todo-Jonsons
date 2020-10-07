@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import Tarefas from '../Tarefas';
+import ProjetosDatalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -119,7 +119,7 @@ const Projetos = () => {
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => navigation.navigate(Tarefas)}>
+                        onPress={() => navigation.navigate(ProjetosDatalhes)}>
                             {project.descricao}
                         </ProjectText>
 
