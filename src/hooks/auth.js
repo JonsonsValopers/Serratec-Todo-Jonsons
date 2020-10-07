@@ -21,7 +21,7 @@ import React, {
         console.log("AuthProvider user", user);
   
         if(user){
-          setData(JSON.parse(user))
+          setData({ user: JSON.parse(user) })
         }
       }
   
@@ -31,16 +31,20 @@ import React, {
     const signIn = useCallback(
         async({ email, password }) => {
             
-            try {
                 const response = await api.get('usuarios');
-                let loginAchado = response.data.find(user => user.email === email && user.password === password);
-                console.log(loginAchado);
-                if(!loginAchado) return;
-                setData(loginAchado);
-                await AsyncStorage.setItem('@JONSONS:user', JSON.stringify(loginAchado));
-            } catch (error) {
-                
-            }
+                const user = response.data.filter(data => {
+                  console.log("data", data.email, email);
+                  return (data.email === email && data.password === password);
+                });
+            
+                console.log("user", user);
+            
+                if(user.length > 0){
+                  await AsyncStorage.setItem('@TODO:user', JSON.stringify(user[0]));
+                  setData({ user: user[0] });
+                }else{
+                  throw new Error('Usuário ou senha inválido');
+                }
         }, [],
     )
   
@@ -48,26 +52,34 @@ import React, {
         async ({ email, password }) => {
 
         try{
-          setData({ email, password });
           console.log(data);
-          await api.post('usuarios', data);
-          await AsyncStorage.setItem('@JONSONS:user', JSON.stringify({ email, password }));
+          const response = await api.post('usuarios', {email: email, password: password});
+          const user = response.data;
+          setData({user: user});
+
+          await AsyncStorage.setItem('@JONSONS:user', JSON.stringify(user));
 
         }catch(error){
             console.log(error);
         }
 
-    }, []);
+    }, [], );
   
     const signOut = useCallback(async () => {
-      await AsyncStorage.removeItem('@JONSONS:user');
+        try {
+          await AsyncStorage.removeItem('@JONSONS:user');
   
-      setData({}); 
+          setData({}); 
+          console.log(data);
+
+        } catch (error) {
+          console.log(error)
+        }
     }, []);
   
     return (
       <AuthContext.Provider
-        value={{ data, signIn, signUp, signOut }}
+        value={{ user: data.user, signIn, signUp, signOut }}
       >
         {children}
       </AuthContext.Provider>
