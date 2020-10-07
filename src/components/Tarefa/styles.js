@@ -5,6 +5,10 @@ export const Tarefa = styled.View`
     background-color: #fff;
 `;
 
+export const TituloTarefa = styled.Text`
+    
+`;
+
 export const BotaoAtualizar = styled.TouchableOpacity`
     background-color: transparent;
     width: 40px;
