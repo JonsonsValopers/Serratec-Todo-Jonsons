@@ -26,7 +26,7 @@ const Tarefas = () => {
                 const user = await AsyncStorage.getItem('@JONSONS:user');
                 console.log(user);
                 if(!user) return;
-                setUsuario(user);
+                setUsuario(JSON.parse(user));
             } catch(error){
                 console.log(error);
             }
