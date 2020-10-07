@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
+
 import { useNavigation } from '@react-navigation/native';
 
 import ProjetosDetalhes from '../ProjetosDetalhes';
@@ -70,13 +71,13 @@ const Projetos = () => {
 
 
     const handleProjects = useCallback(
-        async (task) => {
+        async (project) => {
             const params = {
-                ...task,
-                concluido: !task.concluido
+                ...project,
+                descricao: newProjects
             }
 
-            const response = await api.put(`tarefas/${task.id}`, params);
+            const response = await api.put(`projetos/${project.id}`, params);
 
             console.log("As Tarefas foram concluidas",response);
 
@@ -125,9 +126,17 @@ const Projetos = () => {
                         </ProjectText> 
 
                         <ProjectAction>
+                           <AntDesign 
+                           name="edit" 
+                           size={22} 
+                           color="#69b6ff"
+                           onPress={()=>{
+                               <></>
+                           }}
+                           />
                            <MaterialCommunityIcons 
                            name="delete-outline"
-                           color="#3a3a3a"
+                           color="#69b6ff"
                            size={22}
                            onPress={()=> removeProjects(project)}
                            />
