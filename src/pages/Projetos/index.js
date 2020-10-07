@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+
 import { useNavigation } from '@react-navigation/native';
 
 import ProjetosDetalhes from '../ProjetosDetalhes';
@@ -77,7 +78,7 @@ const Projetos = () => {
 
             const response = await api.put(`tarefas/${task.id}`, params);
 
-            console.log("As Tarefas foram concluidas");
+            console.log("As Tarefas foram concluidas",response);
 
             loadProjects();
         },[loadProjects],
