@@ -29,14 +29,14 @@ const Tarefas = () => {
                 console.log(user);
                 if(!user) return;
                 setUsuario(JSON.parse(user));
-                buscarUsuario(JSON.parse(user));
+                tarefasUsuario(JSON.parse(user));
             } catch(error){
                 console.log(error);
             }
         }, [], 
     )
 
-    const buscarUsuario = useCallback (
+    const tarefasUsuario = useCallback (
         async (user) => {
             try {
                 const resposta = await api.get(`usuarios/${user.id}?_embed=tarefas`);
@@ -61,7 +61,7 @@ const Tarefas = () => {
             {
                 tarefas.map(tarefa => {
                     return(
-                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} />
+                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projeto={}/>
                     )
                 })
             }
