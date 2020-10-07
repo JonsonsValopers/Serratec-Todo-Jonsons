@@ -10,5 +10,5 @@ export const Tarefas = styled.View`
 export const Tarefa = styled.View`
 `;
 
-export const TarefaDescricao = styled.View`
+export const TarefaDescricao = styled.Text`
 `;

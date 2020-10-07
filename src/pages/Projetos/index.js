@@ -118,10 +118,10 @@ const Projetos = () => {
             <ContainerProjeto>
                 { projects.map(project => (
                     <Project key={project.id}>
-                        <ProjectText
+                        {/* <ProjectText
                         onPress={() => navigation.navigate(ProjetosDatalhes)}>
                             {project.descricao}
-                        </ProjectText>
+                        </ProjectText> */}
 
                         <ProjectAction>
                            <MaterialCommunityIcons 
@@ -135,6 +135,8 @@ const Projetos = () => {
                 ))}
             </ContainerProjeto>
         </Container>
+
+        
     )
 }
 export default Projetos;
