@@ -26,7 +26,7 @@ const Projetos = () => {
 
     const loadProjects = useCallback(
         async () => {
-            const response = await api.get('');
+            const response = await api.get(`/projetos`);
             setProjects(response.data);
             console.log(response.data);
         }, [],
@@ -50,7 +50,7 @@ const Projetos = () => {
             };
 
             try {
-                const response = await api.post(``, params)
+                const response = await api.post(`/projetos`, params)
                 console.log("Adcionando projeto",response)
                 loadProjects();
                 setNewProjects();
@@ -81,7 +81,7 @@ const Projetos = () => {
 
     const removeProjects = useCallback (
         async (project) => {
-            const response = await api.delete(`/${project.id}`);
+            const response = await api.delete(`projetos/${project.id}`);
 
             console.log("Eu exclui o projeto familia!",response);
 
@@ -112,7 +112,7 @@ const Projetos = () => {
             )}
 
             <ContainerProjeto>
-                {/* { projects.map(project => (
+                { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText>{project.descricao}</ProjectText>
 
@@ -125,7 +125,7 @@ const Projetos = () => {
                            />
                         </ProjectAction>
                     </Project>
-                ))} */}
+                ))}
             </ContainerProjeto>
         </Container>
     )

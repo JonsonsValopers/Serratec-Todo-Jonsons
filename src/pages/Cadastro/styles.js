@@ -55,3 +55,8 @@ export const Link = styled.Text`
     font-weight: 200;
     color: blue;
 `;
+
+export const TextErro = styled.Text`
+    font-size: 10px;
+    color: red;
+`;
