@@ -122,27 +122,22 @@ const Projetos = () => {
                         <ProjectText
                         onPress={() => navigation.navigate(ProjetosDetalhes)}>
                             {project.descricao}
-                        </ProjectText>
+                        </ProjectText> 
 
                         <ProjectAction>
-                            
-                        <AntDesign 
-                        name="edit" 
-                        size={22} 
-                        color="#005bb2" 
-                        />
+                           <MaterialCommunityIcons 
+                           name="delete-outline"
+                           color="#3a3a3a"
+                           size={22}
+                           onPress={()=> removeProjects(project)}
+                           />
+                        </ProjectAction>
+                    </Project>
+                ))}
+            </ContainerProjeto>
+        </Container>
 
-                        <MaterialCommunityIcons 
-                        name="delete-outline"
-                        color="#005bb2"
-                        size={22}
-                        onPress={()=> removeProjects(project)}
-                        />
-                    </ProjectAction>
-                </Project>
-            ))}
-        </ContainerProjeto>
-    </Container>
+        
     )
 }
 export default Projetos;

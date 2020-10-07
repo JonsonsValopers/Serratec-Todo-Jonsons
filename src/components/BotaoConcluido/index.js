@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState } from 'react';
 
 import api from '../../services/api';
 
@@ -7,13 +7,15 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BotaoConcluido = (props) => {
     const { tarefa } = props;
+    const [concluido, setConcluido] = useState(false);
     
     const atualizarTarefa = async () => {
         tarefa.concluido = !tarefa.concluido;
 
         try {
-            await api.put('tarefas', tarefa);
-            console.log(tarefa)
+            await api.put(`tarefas/${tarefa.id}`, tarefa);
+            console.log(tarefa);
+            setConcluido(tarefa.concluido);
         } catch (error) {
             console.log(error);
         }

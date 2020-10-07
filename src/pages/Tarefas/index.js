@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
+import Tarefa from '../../components/Tarefa'
 
 const Tarefas = () => {
     const { signOut } = useAuth();
@@ -11,10 +12,11 @@ const Tarefas = () => {
     const [tarefas, setTarefas] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
 
-    const verAsync = async () => {
+    const TodosUsuarios = async () => {
         try {
-            const response = await AsyncStorage.getItem('@JONSONS:user');
-            console.log(response);
+            const resposta = await api.get('usuarios');
+            setListaUsuarios(resposta.data);
+            console.log(resposta.data);
         } catch (error) {
             console.log(error);
         }   
@@ -26,7 +28,8 @@ const Tarefas = () => {
                 const user = await AsyncStorage.getItem('@JONSONS:user');
                 console.log(user);
                 if(!user) return;
-                setUsuario(user);
+                setUsuario(JSON.parse(user));
+                buscarUsuario();
             } catch(error){
                 console.log(error);
             }
@@ -36,12 +39,11 @@ const Tarefas = () => {
     const buscarUsuario = useCallback (
         async () => {
             try {
-                
                 const resposta = await api.get(`usuarios/${usuario.id}?_embed=tarefas`);
                 console.log(resposta.data.tarefas);
                 setTarefas(resposta.data.tarefas);
             } catch (error) {
-                
+                console.log(error);
             }
         }, [],
     )
@@ -49,17 +51,19 @@ const Tarefas = () => {
     useEffect(
         () => {
             pegarUsuario(); 
-            buscarUsuario();
-            verAsync();
-        }, [pegarUsuario, buscarUsuario], 
+            TodosUsuarios();
+        }, [pegarUsuario], 
     )
+    
 
     return(
         <>
             {
-                tarefas.map(tarefa => (
-                <Text>{tarefa.descricao}</Text>
-                ))
+                tarefas.map(tarefa => {
+                    return(
+                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} />
+                    )
+                })
             }
             <Button title="Logout" onPress={() => signOut()}/>
         </>

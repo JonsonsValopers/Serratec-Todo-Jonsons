@@ -51,6 +51,7 @@ const ProjetosDetalhes = () => {
           }
         </Tarefas_>
       </Container>
+      
     )
 }
 

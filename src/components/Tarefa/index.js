@@ -4,7 +4,7 @@ import  {Picker } from '@react-native-community/picker';
 
 import { Tarefa as Container } from './styles';
 import BotaoConcluido from '../../components/BotaoConcluido';
-
+import api from '../../services/api'
 
 const Tarefa = (props) => {
     const { tarefa, usuarios } = props;
@@ -13,7 +13,7 @@ const Tarefa = (props) => {
     const atualizarUsuario = async (usuario) => {
         tarefa.usuarioId = usuario.id;
         try {
-            await api.put('tarefas', tarefa);
+            await api.put(`tarefas/${tarefa.id}`, tarefa);
             console.log(tarefa);
         } catch (error) {
             console.log(error);
