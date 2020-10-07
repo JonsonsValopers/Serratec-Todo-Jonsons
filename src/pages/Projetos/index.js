@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
+import ProjetosDatalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -20,6 +22,8 @@ import api from '../../services/api';
 
 
 const Projetos = () => {
+    const navigation = useNavigation();
+
     const [ projects, setProjects ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
@@ -114,7 +118,10 @@ const Projetos = () => {
             <ContainerProjeto>
                 { projects.map(project => (
                     <Project key={project.id}>
-                        <ProjectText>{project.descricao}</ProjectText>
+                        <ProjectText
+                        onPress={() => navigation.navigate(ProjetosDatalhes)}>
+                            {project.descricao}
+                        </ProjectText>
 
                         <ProjectAction>
                            <MaterialCommunityIcons 
