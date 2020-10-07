@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import ProjetosDatalhes from '../ProjetosDetalhes';
+import ProjetosDetalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -57,7 +57,7 @@ const Projetos = () => {
                 const response = await api.post(`/projetos`, params)
                 console.log("Adcionando projeto",response)
                 loadProjects();
-                setNewProjects();
+                setNewProjects("");
 
             } catch (error) {
                 console.log("Error na parte de criar um novo projeto", error);
@@ -119,7 +119,7 @@ const Projetos = () => {
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => navigation.navigate(ProjetosDatalhes)}>
+                        onPress={() => navigation.navigate(ProjetosDetalhes)}>
                             {project.descricao}
                         </ProjectText>
 
