@@ -14,7 +14,7 @@ const RootNavigator = () => {
 
     return (
         <Stack.Navigator screenOptions={{headerShown: false}}>      
-        <Stack.Screen name="Root" component={ data ? AppRoutes : AuthRoutes } />
+        <Stack.Screen name="Root" component={ !data ? AuthRoutes:AppRoutes } />
         </Stack.Navigator>
     )
 }
