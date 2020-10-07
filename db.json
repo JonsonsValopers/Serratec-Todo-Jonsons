@@ -48,14 +48,14 @@
     },
     {
       "descricao": "Aprender react native",
-      "concluido": true,
+      "concluido": false,
       "projetoId": 1,
       "usuarioId": 1,
       "id": 2
     },
     {
       "descricao": "Aprender css",
-      "concluido": true,
+      "concluido": false,
       "projetoId": 1,
       "usuarioId": 1,
       "id": 3
