@@ -10,6 +10,7 @@ const Tarefas = () => {
     const { signOut } = useAuth();
     const [usuario, setUsuario] = useState({});
     const [tarefas, setTarefas] = useState([]);
+    const [projetos, setProjetos] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
 
     const TodosUsuarios = async () => {
@@ -36,6 +37,18 @@ const Tarefas = () => {
         }, [], 
     )
 
+    const listaProjetos = useCallback(
+        async () => {
+            try {
+                const lista = await api.get('projetos');
+                setProjetos(lista.data);
+                console.log(lista.data)
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    )
+
     const tarefasUsuario = useCallback (
         async (user) => {
             try {
@@ -52,6 +65,7 @@ const Tarefas = () => {
         () => {
             pegarUsuario(); 
             TodosUsuarios();
+            listaProjetos();
         }, [pegarUsuario], 
     )
     
@@ -61,7 +75,7 @@ const Tarefas = () => {
             {
                 tarefas.map(tarefa => {
                     return(
-                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projeto={}/>
+                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projetos={projetos}/>
                     )
                 })
             }
