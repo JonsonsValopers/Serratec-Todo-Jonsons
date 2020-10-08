@@ -20,11 +20,15 @@ import
     ProjectAction
 } from './styles';
 
+import Modal from 'react-native-modal';
+import {View, Text} from 'react-native';
+
 import api from '../../services/api';
 
 
 const Projetos = () => {
     const navigation = useNavigation();
+   
 
     const [ projects, setProjects ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
@@ -94,11 +98,12 @@ const Projetos = () => {
             loadProjects();
         },[loadProjects],
     )
-
+    const [visivel, setVisivel ] = useState(false);
+    
     return (
-        <Container>
-            <Title>Lista de Projetos</Title>
 
+        <Container>
+           
             <FormAddNewProject>
                 <Input
                 value={newProjects}
@@ -118,10 +123,11 @@ const Projetos = () => {
             )}
 
             <ContainerProjeto>
+
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => navigation.navigate(ProjetosDetalhes)}>
+                        onPress={() => navigation.navigate(ProjetosDetalhes)}>{/* Gaby aqui e que vai entrar o modale*/}
                             {project.descricao}
                         </ProjectText> 
 
@@ -130,7 +136,7 @@ const Projetos = () => {
                            name="edit" 
                            size={22} 
                            color="#69b6ff"
-                           onPress={()=>{ handleAddProjects(project)}}
+                           onPress={()=> setVisivel(false)}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
@@ -141,10 +147,11 @@ const Projetos = () => {
                         </ProjectAction>
                     </Project>
                 ))}
+                
             </ContainerProjeto>
+            
         </Container>
 
-        
     )
 }
 export default Projetos;
