@@ -17,7 +17,7 @@
     },
     {
       "email": "dudu@gmail.com",
-      "password": "pauloguedesforever",
+      "password": "123",
       "id": 4
     }
   ],
@@ -25,7 +25,37 @@
     {
       "descricao": "teste",
       "id": 1
+    },
+    {
+      "descricao": "Salve Gaby ",
+      "id": 2
     }
   ],
+<<<<<<< HEAD
   "tarefas": []
+=======
+  "tarefas": [
+    {
+      "descricao": "Aprender react",
+      "concluido": true,
+      "usuarioId": 4,
+      "projetoId": 1,
+      "id": 1
+    },
+    {
+      "descricao": "Aprender react native",
+      "concluido": true,
+      "usuarioId": 3,
+      "projetoId": 1,
+      "id": 2
+    },
+    {
+      "descricao": "Aprender css",
+      "concluido": true,
+      "usuarioId": 4,
+      "projetoId": 1,
+      "id": 3
+    }
+  ]
+>>>>>>> fe459aa9e8a51a7a758896d61c0dd0084bd56eac
 }
