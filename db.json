@@ -17,7 +17,7 @@
     },
     {
       "email": "dudu@gmail.com",
-      "password": "pauloguedesforever",
+      "password": "123",
       "id": 4
     }
   ],
@@ -39,14 +39,14 @@
       "descricao": "Aprender react native",
       "concluido": true,
       "projetoId": 1,
-      "usuarioId": 1,
+      "usuarioId": 4,
       "id": 2
     },
     {
       "descricao": "Aprender css",
       "concluido": true,
       "projetoId": 1,
-      "usuarioId": 1,
+      "usuarioId": 4,
       "id": 3
     }
   ]
