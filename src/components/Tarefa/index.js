@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import  {Picker } from '@react-native-community/picker';
 
@@ -7,23 +7,35 @@ import BotaoConcluido from '../../components/BotaoConcluido';
 import api from '../../services/api'
 
 const Tarefa = (props) => {
-    const { tarefa, usuarios, projetos } = props;
+    const { tarefa, usuarios, projetos, usuarioLogado } = props;
     const [usuario, setUsuario] = useState({});
     const [projeto, setProjeto] = useState({});
 
 
-    const atualizarUsuario = async (usuario) => {
-        tarefa.usuarioId = usuario.id;
+    const atualizarUsuario = async (id) => {
+        console.log(id);
+        tarefa.usuarioId = parseInt(id);
         try {
             await api.put(`tarefas/${tarefa.id}`, tarefa);
             console.log(tarefa);
-            let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
-            setProjeto(projetoAchado);
-            console.log(projetoAchado)
         } catch (error) {
             console.log(error);
         }
     }
+    const buscarProjeto = useCallback(
+        () => {
+        let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
+        setProjeto(projetoAchado);
+        console.log(usuarioLogado.email);
+       }, [],
+    )
+
+    useEffect(
+        () => {
+           buscarProjeto();
+            setUsuario(usuarioLogado);
+        }, [buscarProjeto]
+    )
     
 
     return(
@@ -37,16 +49,16 @@ const Tarefa = (props) => {
             <BotaoConcluido tarefa={tarefa} />
 
             <Picker
-                selectedValue={usuario}
+                selectedValue={usuario.id}
                 style={{height: 50, width: 100}}
-                onValueChange={(itemValue, itemIndex) => {
+                onValueChange={(itemValue, itemPosition) => {
                     setUsuario(itemValue);
                     atualizarUsuario(itemValue);
                 }
                 }>
                 {
                     usuarios.map(usuario => (
-                        <Picker.Item label={usuario.email} value={usuario} />
+                        <Picker.Item label={usuario.email} value={usuario.id} />
                     ))
                 }
             </Picker>
