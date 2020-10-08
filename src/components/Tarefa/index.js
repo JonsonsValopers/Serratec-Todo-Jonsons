@@ -22,20 +22,20 @@ const Tarefa = (props) => {
             console.log(error);
         }
     }
-    const buscarProjeto = useCallback(
-        () => {
-        let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
-        setProjeto(projetoAchado);
-        console.log(usuarioLogado.email);
-       }, [],
-    )
+    // const buscarProjeto = useCallback(
+    //     () => {
+    //     let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
+    //     setProjeto(projetoAchado);
+    //     console.log(usuarioLogado.email);
+    //    }, [],
+    // )
 
-    useEffect(
-        () => {
-           buscarProjeto();
-            setUsuario(usuarioLogado);
-        }, [buscarProjeto]
-    )
+    // useEffect(
+    //     () => {
+    //        buscarProjeto();
+    //         setUsuario(usuarioLogado);
+    //     }, [buscarProjeto]
+    // )
     
 
     return(
