@@ -7,37 +7,23 @@ import BotaoConcluido from '../../components/BotaoConcluido';
 import api from '../../services/api'
 
 const Tarefa = (props) => {
-    const { tarefa, usuarios, projeto } = props;
+    const { tarefa, usuarios, projetos } = props;
     const [usuario, setUsuario] = useState({});
     const [projeto, setProjeto] = useState({});
+
 
     const atualizarUsuario = async (usuario) => {
         tarefa.usuarioId = usuario.id;
         try {
             await api.put(`tarefas/${tarefa.id}`, tarefa);
             console.log(tarefa);
+            let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
+            setProjeto(projetoAchado);
+            console.log(projetoAchado)
         } catch (error) {
             console.log(error);
         }
     }
-
-    const pegarProjeto = async (usuario) => {
-        tarefa.usuarioId = usuario.id;
-        try {
-            const resposta = await api.get(`projetos/${tarefa.projetoId}`);
-            setProjeto(resposta.data);
-            console.log(projeto.data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    useEffect(
-        () => {
-            pegarProjeto();
-        }, [pegarProjeto]
-    )
-    
     
 
     return(
@@ -45,7 +31,7 @@ const Tarefa = (props) => {
 
             <TituloTarefa>{tarefa.descricao}</TituloTarefa>
 
-            <NomeProjeto>{projeto.nome}</NomeProjeto>
+            <NomeProjeto>{projeto.descricao}</NomeProjeto>
 
         <Botoes>
             <BotaoConcluido tarefa={tarefa} />
