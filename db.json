@@ -16,31 +16,15 @@
       "id": 3
     },
     {
-      "email": "ccc@ccc.com",
-      "password": "1232345678",
+      "email": "dudu@gmail.com",
+      "password": "pauloguedesforever",
       "id": 4
     }
   ],
   "projetos": [
     {
-      "descricao": "Projeto Final",
+      "descricao": "Salve Taylane",
       "id": 1
-    },
-    {
-      "descricao": "Teste",
-      "id": 2
-    },
-    {
-      "descricao": "Task",
-      "id": 3
-    },
-    {
-      "descricao": "teste",
-      "id": 4
-    },
-    {
-      "descricao": "Taks",
-      "id": 5
     }
   ],
   "tarefas": [

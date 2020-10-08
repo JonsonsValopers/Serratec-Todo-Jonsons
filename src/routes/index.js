@@ -13,7 +13,9 @@ const RootNavigator = () => {
     const { user } = useAuth();
 
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>      
+        <Stack.Navigator screenOptions={{
+            headerShown: false,
+        }}>      
         <Stack.Screen name="Root" component={ user ? AppRoutes : AuthRoutes} />
         </Stack.Navigator>
     )
