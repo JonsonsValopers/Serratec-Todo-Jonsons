@@ -23,26 +23,13 @@
   ],
   "projetos": [
     {
-      "descricao": "Projeto Final",
+      "descricao": "Salve Taylane",
       "id": 1
-    },
-    {
-      "descricao": "Teste",
-      "id": 2
-    },
-    {
-      "descricao": "Task",
-      "id": 3
-    },
-    {
-      "descricao": "teste",
-      "id": 4
-    },
-    {
-      "descricao": "Taks",
-      "id": 5
     }
   ],
+<<<<<<< HEAD
+  "tarefas": []
+=======
   "tarefas": [
     {
       "descricao": "Aprender react",
@@ -53,17 +40,18 @@
     },
     {
       "descricao": "Aprender react native",
-      "concluido": false,
+      "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
       "id": 2
     },
     {
       "descricao": "Aprender css",
-      "concluido": false,
+      "concluido": true,
       "projetoId": 1,
       "usuarioId": 1,
       "id": 3
     }
   ]
+>>>>>>> 04145432f13177bef3c4ef8dc931a7855960e475
 }
