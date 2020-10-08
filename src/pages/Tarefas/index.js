@@ -6,6 +6,8 @@ import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import Tarefa from '../../components/Tarefa'
 
+import { Container, Title }  from './styles';
+
 const Tarefas = () => {
     const { signOut } = useAuth();
     const [usuario, setUsuario] = useState({});
@@ -72,10 +74,11 @@ const Tarefas = () => {
 
     return(
         <>
+            {/* <Title>Lista de tarefas: </Title> */}
             {
                 tarefas.map(tarefa => {
                     return(
-                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projetos={projetos}/>
+                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projetos={projetos} usuarioLogado={usuario}/>
                     )
                 })
             }
