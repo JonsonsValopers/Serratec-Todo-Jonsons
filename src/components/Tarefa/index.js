@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { Alert } from 'react-native';
+=======
+import React, { useState, useEffect, useCallback } from 'react';
+>>>>>>> eff2a86f1a7fc0ff64026c1e7e2337f781c9de39
 
 import  { Picker } from '@react-native-community/picker';
 
@@ -21,7 +25,7 @@ import api from '../../services/api'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tarefa = (props) => {
-    const { tarefa, usuarios, projetos } = props;
+    const { tarefa, usuarios, projetos, usuarioLogado } = props;
     const [usuario, setUsuario] = useState({});
     const [projeto, setProjeto] = useState({});
 
@@ -29,18 +33,34 @@ const Tarefa = (props) => {
     // const [Idprojeto, setIdprojeto] = useState();
     // const [Idusuario, setIdusuario] = useState();
 
-    const atualizarUsuario = async (usuario) => {
-        tarefa.usuarioId = usuario.id;
+    const atualizarUsuario = async (id) => {
+        console.log(id);
+        tarefa.usuarioId = parseInt(id);
         try {
             await api.put(`tarefas/${tarefa.id}`, tarefa);
             console.log(tarefa);
-            let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
-            setProjeto(projetoAchado);
-            console.log(projetoAchado)
         } catch (error) {
             console.log(error);
         }
     }
+<<<<<<< HEAD
+=======
+    const buscarProjeto = useCallback(
+        () => {
+        let projetoAchado = projetos.find(projeto => projeto.id === tarefa.projetoId);
+        setProjeto(projetoAchado);
+        console.log(usuarioLogado.email);
+       }, [],
+    )
+
+    useEffect(
+        () => {
+           buscarProjeto();
+            setUsuario(usuarioLogado);
+        }, [buscarProjeto]
+    )
+    
+>>>>>>> eff2a86f1a7fc0ff64026c1e7e2337f781c9de39
 
     // const adicionarTarefa = async () => {
 
@@ -117,16 +137,16 @@ const Tarefa = (props) => {
             <BotaoConcluido tarefa={tarefa} />
 
             <Picker
-                selectedValue={usuario}
+                selectedValue={usuario.id}
                 style={{height: 50, width: 100}}
-                onValueChange={(itemValue, itemIndex) => {
+                onValueChange={(itemValue, itemPosition) => {
                     setUsuario(itemValue);
                     atualizarUsuario(itemValue);
                 }
                 }>
                 {
                     usuarios.map(usuario => (
-                        <Picker.Item label={usuario.email} value={usuario} />
+                        <Picker.Item label={usuario.email} value={usuario.id} />
                     ))
                 }
             </Picker>
