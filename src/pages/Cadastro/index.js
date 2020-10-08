@@ -33,7 +33,7 @@ const Cadastro = () => {
         let regexEmail = /^([\w\d^\s]{3,})[@][a-z0-9]{2,10}[.][a-z]{2,6}$/g;
 
         if(!regexEmail.test(email)) {
-            setSenhaErrada("E-mail não informado corretamente");
+            setSenhaErrada("Email não informado corretamente");
             return;
         }
 
@@ -67,45 +67,39 @@ const Cadastro = () => {
     }
 
     return(
-        // <Container>
-        //     <Image source={logoImg} resizeMethod="resize"/>
-        //     <Title> Cadastro </Title>
+        <Container>
+            <Image source={logoImg} resizeMethod="resize"/>
+            <Title> Cadastro </Title>
 
-        //     <Input 
-        //         value={email}
-        //         onChangeText={text => setEmail(text)}
-        //         placeholder="E-mail"
-        //     />
+            <Input 
+                value={email}
+                onChangeText={text => setEmail(text)}
+                placeholder="E-mail"
+            />
             
-        //     {emailErrado && 
-        //         <TextErro>{emailErrado}</TextErro>
-        //     }
+            { !!emailErrado ? <TextErro>{emailErrado}</TextErro> : <></> } 
 
-        //     <Input
-        //         value={password}
-        //         onChangeText={text => setPassword(text)}
-        //         placeholder="password"
-        //         secureTextEntry={true}
-        //     />
+            <Input
+                value={password}
+                onChangeText={text => setPassword(text)}
+                placeholder="password"
+                secureTextEntry={true}
+            />
 
-        //     { senhaErrada &&
-        //         <TextErro>{senhaErrada}</TextErro>
-        //     } 
+            { !!senhaErrada ? <TextErro>{senhaErrada}</TextErro> : <></> } 
             
-        //      {/* <Button
-        //         onPress={() => cadastro()}
-        //     >
-        //         <ButtonText>Cadastrar</ButtonText>
-        //     </Button> */}
+             <Button
+                onPress={() => cadastro()}
+            >
+                <ButtonText>Cadastrar</ButtonText>
+            </Button>
             
-        //     <Link
-        //         onPress={() => navigation.navigate(Login)}
-        //     >Faça o seu Login</Link>
-        // </Container>
+            <Link
+                onPress={() => navigation.navigate(Login)}
+            >Faça o seu Login</Link>
+        </Container>
 
-        <>
-
-        </>
+       
     )
 }
 
