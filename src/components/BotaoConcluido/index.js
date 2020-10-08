@@ -7,7 +7,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BotaoConcluido = (props) => {
     const { tarefa } = props;
-    const [concluido, setConcluido] = useState(false);
+    const [concluido, setConcluido] = useState(true);
     
     const atualizarTarefa = async () => {
         tarefa.concluido = !tarefa.concluido;
