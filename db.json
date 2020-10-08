@@ -27,9 +27,6 @@
       "id": 1
     }
   ],
-<<<<<<< HEAD
-  "tarefas": []
-=======
   "tarefas": [
     {
       "descricao": "Aprender react",
@@ -53,5 +50,4 @@
       "id": 3
     }
   ]
->>>>>>> 04145432f13177bef3c4ef8dc931a7855960e475
 }

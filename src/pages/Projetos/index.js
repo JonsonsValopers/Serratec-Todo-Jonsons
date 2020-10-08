@@ -130,9 +130,7 @@ const Projetos = () => {
                            name="edit" 
                            size={22} 
                            color="#69b6ff"
-                           onPress={()=>{
-                               <></>
-                           }}
+                           onPress={()=>{ handleAddProjects(project)}}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
