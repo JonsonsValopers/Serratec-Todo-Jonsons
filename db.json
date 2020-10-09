@@ -17,40 +17,36 @@
     },
     {
       "email": "dudu@gmail.com",
-      "password": "123",
+      "password": "pauloguedesforever",
       "id": 4
     }
   ],
   "projetos": [
     {
-      "descricao": "teste",
+      "descricao": "TEste Modal",
       "id": 1
-    },
-    {
-      "descricao": "Salve Gaby ",
-      "id": 2
     }
   ],
   "tarefas": [
     {
       "descricao": "Aprender react",
       "concluido": true,
-      "usuarioId": 1,
       "projetoId": 1,
+      "usuarioId": 1,
       "id": 1
     },
     {
       "descricao": "Aprender react native",
       "concluido": true,
-      "usuarioId": 2,
       "projetoId": 1,
+      "usuarioId": 1,
       "id": 2
     },
     {
-      "descricao": "Aprender algo",
-      "concluido": false,
-      "usuarioId": 2,
+      "descricao": "Aprender css",
+      "concluido": true,
       "projetoId": 1,
+      "usuarioId": 1,
       "id": 3
     }
   ]
