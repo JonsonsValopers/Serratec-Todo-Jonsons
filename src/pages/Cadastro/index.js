@@ -33,7 +33,7 @@ const Cadastro = () => {
         let regexEmail = /^([\w\d^\s]{3,})[@][a-z0-9]{2,10}[.][a-z]{2,6}$/g;
 
         if(!regexEmail.test(email)) {
-            setSenhaErrada("Email não informado corretamente");
+            setEmailErrada("Email não informado corretamente");
             return;
         }
 
@@ -94,9 +94,9 @@ const Cadastro = () => {
                 <ButtonText>Cadastrar</ButtonText>
             </Button>
             
-            <Link
+            {/* <Link
                 onPress={() => navigation.navigate(Login)}
-            >Faça o seu Login</Link>
+            >Faça o seu Login</Link> */}
         </Container>
 
        
