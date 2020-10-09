@@ -94,9 +94,9 @@ const Cadastro = () => {
                 <ButtonText>Cadastrar</ButtonText>
             </Button>
             
-            {/* <Link
+            <Link
                 onPress={() => navigation.navigate(Login)}
-            >Faça o seu Login</Link> */}
+            >Faça o seu Login</Link>
         </Container>
 
        
