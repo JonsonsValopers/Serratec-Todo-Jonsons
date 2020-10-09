@@ -4,7 +4,7 @@ import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
-// import ProjetosDetalhes from '../ProjetosDetalhes';
+import ProjetosDetalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -129,7 +129,7 @@ const Projetos = () => {
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => navigation.navigate(ProjetosDetalhes)}>{/* Gaby aqui e que vai entrar o modale*/}
+                        onPress={() => navigation.navigate(ProjetosDetalhes)}>
                             {project.descricao}
                         </ProjectText> 
 
@@ -155,6 +155,8 @@ const Projetos = () => {
             <Modal_ visivel = {visivel} setVisivel= {setVisivel}/>
 
         </Container>
+
+        
 
     )
 }

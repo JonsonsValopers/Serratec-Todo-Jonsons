@@ -28,6 +28,7 @@ const Modal_ = ({visivel, setVisivel}) => {
         </TouchableHighlight>
 
       </Modal>
+
   );
 };
 

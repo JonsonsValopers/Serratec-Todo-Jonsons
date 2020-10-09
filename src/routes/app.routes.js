@@ -13,18 +13,18 @@ const AppRoutes = () => {
   return (
 
     <App.Navigator>
-      <App.Screen 
-        name="Projetos" 
-        component={Projetos}
-        options={{
-          tabBarIcon: () => (
-            <MaterialCommunityIcons 
-            name="view-dashboard" 
-            color="#69b6ff" 
-            size={22} 
-            />
-          )
-        }} 
+       <App.Screen 
+         name="Projetos" 
+         component={Projetos}
+         options={{
+           tabBarIcon: () => (
+             <MaterialCommunityIcons 
+             name="view-dashboard" 
+             color="#69b6ff" 
+             size={22} 
+             />
+           )
+         }} 
       />
       <App.Screen   
         name="ProjetosDetalhes" 
@@ -48,10 +48,6 @@ const AppRoutes = () => {
             name="view-dashboard" 
             color="#69b6ff" 
             size={22}
-            style={{
-              marginTop: '-3px',
-              marginBottom: '-3px'
-            }} 
             />
           )
         }}  
