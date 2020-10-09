@@ -49,3 +49,8 @@ export const Imagem = styled.Image`
     width: 300px;
     height: 200px;
 `;
+
+export const TextErro = styled.Text`
+    font-size: 10px;
+    color: red;
+`;
