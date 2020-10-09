@@ -17,7 +17,8 @@ import
     ContainerProjeto,
     Project,
     ProjectText,
-    ProjectAction
+    ProjectAction,
+    TarefaText
 } from './styles';
 
 // import Modal from 'react-native-modal';
@@ -31,6 +32,7 @@ const Projetos = () => {
     const navigation = useNavigation();
    
     const [ projects, setProjects ] = useState([]);
+    const [ projetoId, setProjetoId ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
     const [visivel, setVisivel ] = useState(false);
@@ -43,8 +45,34 @@ const Projetos = () => {
         }, [],
     );
 
+
+    const mostraProjetoID = useCallback(
+        async (idProjeto) => {
+            try {
+                const resposta = await api.get(`/projetos/${idProjeto}`);
+                setProjetoId(resposta.data);
+                setVisivel(true);
+                console.log("resposta", resposta);
+                
+            } catch (error) {
+                console.log("Erros devs nao preparados para usar a api", error);
+                setErroMessage("ERRO teste");
+            }    
+        },[]
+    );    
+
+
+    // const pegarTarefasId= useCallback(
+    //     async (projeto) => {
+    //       const response = await api.get(`projetos/${projeto.id}`);
+    //       setTarefas(response.data);
+    //       console.log(resposne.data)
+    //     },[],
+    //   ); 
+
     useEffect(()=> {
         loadProjects();
+        // mostraProjetoID();
     },[])
 
     const handleAddProjects = useCallback(
@@ -128,7 +156,7 @@ const Projetos = () => {
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => navigation.navigate(ProjetosDetalhes)}>
+                        onPress={() => mostraProjetoID(project.id)}>
                             {project.descricao}
                         </ProjectText> 
 
@@ -137,7 +165,7 @@ const Projetos = () => {
                            name="edit" 
                            size={22} 
                            color="#69b6ff"
-                           onPress={()=> setVisivel(true)}
+                           onPress={()=> navigation.navigate(ProjetosDetalhes)}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
@@ -147,10 +175,11 @@ const Projetos = () => {
                            />
                         </ProjectAction>
                     </Project>
+
+                    
                 ))}
                 
             </ContainerProjeto>
-
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -160,6 +189,7 @@ const Projetos = () => {
                 }}
             >
                 
+<<<<<<< HEAD
                 <TouchableHighlight
                     onPress={() => {
                     setVisivel(!visivel);
@@ -170,6 +200,22 @@ const Projetos = () => {
 
              </Modal>
 
+=======
+            <TouchableHighlight
+                onPress={() => {
+                setVisivel(!visivel);
+                }}>
+                  
+            <View key={projetoId.id}>
+            
+            <TarefaText>{projetoId.descricao}</TarefaText>
+                <Text> Fechar </Text>
+                </View>
+            </TouchableHighlight>
+
+            </Modal>
+           
+>>>>>>> 0afa79b5302b7e1694b82f87860ed9af4c9a00d1
 
         </Container>
 

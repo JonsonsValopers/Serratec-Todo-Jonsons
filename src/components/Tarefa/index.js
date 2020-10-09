@@ -9,11 +9,7 @@ import {
     NomeProjeto, 
     BotaoExcluir,
     Botoes,
-    ContainerTexto,
-    // FormTarefa,
-    // Input_,
-    // BotaoAdicionar,
-    // BotaoText
+    ContainerTexto
 } from './styles';
 
 import BotaoConcluido from '../../components/BotaoConcluido';
@@ -27,9 +23,6 @@ const Tarefa = (props) => {
     const [projeto, setProjeto] = useState({});
     const [load, setLoad] = useState(false)
 
-    // const [novaTarefa, setNovaTarefa] = useState("");
-    // const [Idprojeto, setIdprojeto] = useState();
-    // const [Idusuario, setIdusuario] = useState();
 
     const atualizarUsuario = 
         async (usuario) => {
@@ -44,9 +37,7 @@ const Tarefa = (props) => {
             }
     }
 
-    const teste = (user) => {
-        console.log(user);
-    }
+  
 
     const buscarProjeto = useCallback(
         () => {
@@ -64,35 +55,6 @@ const Tarefa = (props) => {
         }, [buscarProjeto]
     )
     
-
-
-    // const adicionarTarefa = async () => {
-
-    //     const params = {
-    //         descricao: novaTarefa,
-    //         concluido: false,
-    //         projetoId: Idprojeto,
-    //         usuarioId: Idusuario
-    //     }
-
-    //     try {
-
-    //         const response = await api.post('tarefas', params);
-    //         Alert.alert("Sucesso!", "Tarefa adicionada com sucesso.", [{
-    //             text: "ok"
-    //         }]);
-
-    //         console.log(response)
-            
-    //     } catch (erro) {
-
-    //         console.log("Erro adicionarTarefa: ", erro);
-    //         Alert.alert("Erro!", "Tarefa nao adicionada.", [{
-    //             text: "ok"
-    //         }]);
-
-    //     }
-    // }
 
     const excluirTarefa = async(id) => {
         
@@ -119,18 +81,7 @@ const Tarefa = (props) => {
     return(
         <Container>
 
-             {/* <FormTarefa>
-                 <Input_ 
-                     value={novaTarefa} 
-                     onChangeText={(tarefa) => setNovaTarefa(tarefa)}      
-                     placeholder="Nova tarefa..."      
-                 />
-                <BotaoAdicionar onPress={() => adicionarTarefa()} >
-                     <BotaoText>
-                         Adicionar
-                     </BotaoText>
-                 </BotaoAdicionar>
-             </FormTarefa> */}
+             
 
              <ContainerTexto>
                 <TituloTarefa>{tarefa.descricao}</TituloTarefa>

@@ -4,6 +4,7 @@ import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 
+// import { Alert } from 'react-native';
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
 import Cadastro from '../Cadastro'
@@ -28,10 +29,19 @@ const Login = () => {
                 text: 'ok'}])
 
             console.log("Login: ", email + password);
+
+            // Alert.alert('Sucesso!', 'Login realizado com sucesso!', [{
+            //     text: 'ok'}])
+
         } catch (error) {
+<<<<<<< HEAD
             
             Alert.alert('Erro!', 'Houve um erro no seu login tente novamente!', [{
                 text: 'ok'}])
+=======
+            // Alert.alert('Erro!', 'Houve um erro no seu login tente novamente!', [{
+            //     text: 'ok'}])
+>>>>>>> 0afa79b5302b7e1694b82f87860ed9af4c9a00d1
 
             console.log("login: ", error)
         }
