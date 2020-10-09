@@ -47,7 +47,7 @@ const Cadastro = () => {
       try {
 
         console.log("submit", email, password);
-        signUp({ email: email, password: password });
+        await signUp({ email: email, password: password });
 
         console.log('cadastro sucess');
 
