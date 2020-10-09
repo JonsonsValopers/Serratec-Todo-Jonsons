@@ -20,8 +20,8 @@ import
     ProjectAction
 } from './styles';
 
-import Modal from 'react-native-modal';
-import {View, Text} from 'react-native';
+// import Modal from 'react-native-modal';
+import {View, Text, TouchableHighlight, Modal} from 'react-native';
 import Modal_ from '../../components/Modal';
 
 import api from '../../services/api';
@@ -30,7 +30,6 @@ import api from '../../services/api';
 const Projetos = () => {
     const navigation = useNavigation();
    
-
     const [ projects, setProjects ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
@@ -152,7 +151,25 @@ const Projetos = () => {
                 
             </ContainerProjeto>
 
-            <Modal_ visivel = {visivel} setVisivel= {setVisivel}/>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={visivel}
+                onRequestClose={() => {
+                setVisivel(false)
+                }}
+            >
+                
+                <TouchableHighlight
+                    onPress={() => {
+                    setVisivel(!visivel);
+                    }}
+                >
+                    <Text >teste {visivel?"true":"false"}</Text>
+                </TouchableHighlight>
+
+             </Modal>
+
 
         </Container>
 
