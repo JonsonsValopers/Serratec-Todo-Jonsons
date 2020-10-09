@@ -56,13 +56,13 @@ const Login = () => {
             </ButtonSubmit>
 
 
-            {/* <ButtonSignup>
+            <ButtonSignup>
                 {carregando ? (
                     <ActivityIndicator color="#fff" />
                 ) : (
                         <ButtonText onPress={() => navigation.navigate(Cadastro)}>Cadastre-se</ButtonText>
                     )}
-            </ButtonSignup> */}
+            </ButtonSignup>
 
         </Container>
     )

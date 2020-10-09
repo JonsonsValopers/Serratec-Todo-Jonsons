@@ -6,7 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const BotaoConcluido = (props) => {
-    const { tarefa } = props;
+    const { tarefa, funcaoTarefas, usuarioLogado } = props;
     const [concluido, setConcluido] = useState(true);
     
     const atualizarTarefa = async () => {
@@ -16,6 +16,7 @@ const BotaoConcluido = (props) => {
             await api.put(`tarefas/${tarefa.id}`, tarefa);
             console.log(tarefa);
             setConcluido(tarefa.concluido);
+            funcaoTarefas(usuarioLogado);
         } catch (error) {
             console.log(error);
         }
