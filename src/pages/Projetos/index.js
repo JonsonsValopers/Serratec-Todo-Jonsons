@@ -165,7 +165,7 @@ const Projetos = () => {
                     setVisivel(!visivel);
                     }}
                 >
-                    <Text >teste {visivel?"true":"false"}</Text>
+                    <Text > teste {visivel?"true":"false"}</Text>
                 </TouchableHighlight>
 
              </Modal>
