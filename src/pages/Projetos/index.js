@@ -4,7 +4,7 @@ import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
-import ProjetosDetalhes from '../ProjetosDetalhes';
+// import ProjetosDetalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -22,6 +22,7 @@ import
 
 import Modal from 'react-native-modal';
 import {View, Text} from 'react-native';
+import Modal_ from '../../components/Modal';
 
 import api from '../../services/api';
 
@@ -33,6 +34,7 @@ const Projetos = () => {
     const [ projects, setProjects ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
+    const [visivel, setVisivel ] = useState(false);
 
     const loadProjects = useCallback(
         async () => {
@@ -98,7 +100,7 @@ const Projetos = () => {
             loadProjects();
         },[loadProjects],
     )
-    const [visivel, setVisivel ] = useState(false);
+    
     
     return (
 
@@ -136,7 +138,7 @@ const Projetos = () => {
                            name="edit" 
                            size={22} 
                            color="#69b6ff"
-                           onPress={()=> setVisivel(false)}
+                           onPress={()=> setVisivel(true)}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
@@ -149,7 +151,9 @@ const Projetos = () => {
                 ))}
                 
             </ContainerProjeto>
-            
+
+            <Modal_ visivel = {visivel} setVisivel= {setVisivel}/>
+
         </Container>
 
     )
