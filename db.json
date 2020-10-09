@@ -33,6 +33,41 @@
     {
       "descricao": "Modal 2",
       "id": 3
+    },
+    {
+      "descricao": "Tarefa",
+      "concluido": true,
+      "projetoId": 1,
+      "usuarioId": 4,
+      "id": 4
+    },
+    {
+      "descricao": "Muito lindo",
+      "concluido": true,
+      "projetoId": 1,
+      "usuarioId": 3,
+      "id": 6
+    },
+    {
+      "descricao": "Adicionar scrollview",
+      "concluido": true,
+      "projetoId": 1,
+      "usuarioId": 4,
+      "id": 7
+    },
+    {
+      "descricao": "Adicionar scrollview",
+      "concluido": true,
+      "projetoId": 1,
+      "usuarioId": 2,
+      "id": 8
+    },
+    {
+      "descricao": "Tarefa",
+      "concluido": false,
+      "projetoId": 1,
+      "usuarioId": 3,
+      "id": 9
     }
   ],
   "tarefas": []

@@ -13,3 +13,19 @@ export const Title = styled.Text`
     font-weight: bold;
     color: #3a3a3a;
 `;
+
+export const FormTarefa = styled.View`
+    
+ `;
+
+export const Input_ = styled.TextInput`
+
+`;
+
+export const BotaoAdicionar = styled.TouchableOpacity`
+
+`;
+
+export const BotaoText = styled.Text`
+
+`;

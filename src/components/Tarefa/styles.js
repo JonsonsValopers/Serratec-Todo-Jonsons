@@ -40,18 +40,3 @@ export const BotaoExcluir = styled.TouchableOpacity`
     height: 40px;
 `;
 
-// export const FormTarefa = styled.View`
-    
-// `;
-
-// export const Input_ = styled.TextInput`
-
-// `;
-
-// export const BotaoAdicionar = styled.TouchableOpacity`
-
-// `;
-
-// export const BotaoText = styled.Text`
-
-// `;
