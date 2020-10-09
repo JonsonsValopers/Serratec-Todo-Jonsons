@@ -3,6 +3,7 @@ import { ActivityIndicator } from 'react-native';
 import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
 
+// import { Alert } from 'react-native';
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
 import Cadastro from '../Cadastro'
@@ -23,7 +24,14 @@ const Login = () => {
         try {
             signIn({ email: email, password: password });
             console.log("Login: ", email + password);
+
+            // Alert.alert('Sucesso!', 'Login realizado com sucesso!', [{
+            //     text: 'ok'}])
+
         } catch (error) {
+            // Alert.alert('Erro!', 'Houve um erro no seu login tente novamente!', [{
+            //     text: 'ok'}])
+
             console.log("login: ", error)
         }
     }

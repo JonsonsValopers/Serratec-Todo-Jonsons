@@ -1,35 +1,35 @@
-import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  Text,
-  TouchableHighlight,
-  View
-} from "react-native";
+// import React, { useState } from "react";
+// import {
+//   Alert,
+//   Modal,
+//   Text,
+//   TouchableHighlight,
+//   View
+// } from "react-native";
 
-const Modal_ = ({visivel, setVisivel}) => {
+// const Modal_ = ({visivel, setVisivel}) => {
 
-  return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={visivel}
-        onRequestClose={() => {
-        setVisivel(false)
-        }}
-      >
+//   return (
+//       <Modal
+//         animationType="slide"
+//         transparent={true}
+//         visible={visivel}
+//         onRequestClose={() => {
+//         setVisivel(false)
+//         }}
+//       >
            
-        <TouchableHighlight
-            onPress={() => {
-            setVisivel(!visivel);
-            }}
-        >
-        <Text >teste {visivel?"true":"false"}</Text>
-        </TouchableHighlight>
+//         <TouchableHighlight
+//             onPress={() => {
+//             setVisivel(!visivel);
+//             }}
+//         >
+//         <Text >teste {visivel?"true":"false"}</Text>
+//         </TouchableHighlight>
 
-      </Modal>
+//       </Modal>
 
-  );
-};
+//   );
+// };
 
-export default Modal_;
+// export default Modal_;

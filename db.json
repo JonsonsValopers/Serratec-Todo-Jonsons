@@ -23,27 +23,15 @@
   ],
   "projetos": [
     {
-      "descricao": "TEste Modal",
+      "descricao": "TEste api",
       "id": 1
     },
     {
-      "descricao": "Projeto Final",
-      "id": 2
-    }
-  ],
-  "tarefas": [
-    {
-      "descricao": "Aprender react native",
-      "concluido": true,
-      "projetoId": 1,
-      "usuarioId": 2,
+      "descricao": "TEste 2",
       "id": 2
     },
     {
-      "descricao": "Aprender css",
-      "concluido": true,
-      "projetoId": 1,
-      "usuarioId": 3,
+      "descricao": "Modal 2",
       "id": 3
     },
     {
@@ -81,5 +69,6 @@
       "usuarioId": 3,
       "id": 9
     }
-  ]
+  ],
+  "tarefas": []
 }
