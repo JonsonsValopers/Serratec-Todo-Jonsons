@@ -55,6 +55,8 @@ export const ProjectAction = styled.View`
 `;
 
 export const ErroMessage = styled.Text``;
+export const TarefaText = styled.Text``;
+
 
 
 // export const Task = styled.View`
