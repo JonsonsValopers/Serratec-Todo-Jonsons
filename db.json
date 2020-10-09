@@ -35,21 +35,21 @@
     {
       "descricao": "Aprender react",
       "concluido": true,
-      "usuarioId": 4,
+      "usuarioId": 1,
       "projetoId": 1,
       "id": 1
     },
     {
       "descricao": "Aprender react native",
       "concluido": true,
-      "usuarioId": 3,
+      "usuarioId": 2,
       "projetoId": 1,
       "id": 2
     },
     {
-      "descricao": "Aprender css",
-      "concluido": true,
-      "usuarioId": 4,
+      "descricao": "Aprender algo",
+      "concluido": false,
+      "usuarioId": 2,
       "projetoId": 1,
       "id": 3
     }

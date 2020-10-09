@@ -6,84 +6,85 @@ import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import Tarefa from '../../components/Tarefa';
 
-// import { Container, Title }  from './styles';
+import { Container, Title }  from './styles';
 
 const Tarefas = () => {
     const { signOut } = useAuth();
-    // const [usuario, setUsuario] = useState({});
-    // const [tarefas, setTarefas] = useState([]);
-    // const [projetos, setProjetos] = useState([]);
-    // const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [usuario, setUsuario] = useState({});
+    const [tarefas, setTarefas] = useState([]);
+    const [projetos, setProjetos] = useState([]);
+    const [listaUsuarios, setListaUsuarios] = useState([]);
 
-    // const TodosUsuarios = async () => {
-    //     try {
-    //         const resposta = await api.get('usuarios');
-    //         setListaUsuarios(resposta.data);
-    //         console.log(resposta.data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }   
-    // }
+    const TodosUsuarios = async () => {
+        try {
+            const resposta = await api.get('usuarios');
+            setListaUsuarios(resposta.data);
+            console.log(resposta.data);
+        } catch (error) {
+            console.log(error);
+        }   
+    }
 
-    // const pegarUsuario = useCallback(
-    //     async () => {
-    //         try{
-    //             const user = await AsyncStorage.getItem('@JONSONS:user');
-    //             console.log(user);
-    //             if(!user) return;
-    //             setUsuario(JSON.parse(user));
-    //             tarefasUsuario(JSON.parse(user));
-    //         } catch(error){
-    //             console.log(error);
-    //         }
-    //     }, [], 
-    // )
+    const pegarUsuario = useCallback(
+        async () => {
+            try{
+                const user = await AsyncStorage.getItem('@JONSONS:user');
+                console.log(user);
+                if(!user) return;
+                setUsuario(JSON.parse(user));
+                tarefasUsuario(JSON.parse(user));
+            } catch(error){
+                console.log(error);
+            }
+        }, [], 
+    )
 
-    // const listaProjetos = useCallback(
-    //     async () => {
-    //         try {
-    //             const lista = await api.get('projetos');
-    //             setProjetos(lista.data);
-    //             console.log(lista.data)
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }
-    // )
+    const listaProjetos = useCallback(
+        async () => {
+            try {
+                const lista = await api.get('projetos');
+                setProjetos(lista.data);
+                console.log(lista.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    )
 
-    // const tarefasUsuario = useCallback (
-    //     async (user) => {
-    //         try {
-    //             const resposta = await api.get(`usuarios/${user.id}?_embed=tarefas`);
-    //             console.log(resposta.data.tarefas);
-    //             setTarefas(resposta.data.tarefas);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     }, [],
-    // )
+    const tarefasUsuario = useCallback (
+        async (user) => {
+            try {
+                const resposta = await api.get(`usuarios/${user.id}?_embed=tarefas`);
+                console.log(resposta.data.tarefas);
+                setTarefas(resposta.data.tarefas);
+            } catch (error) {
+                console.log(error);
+            }
+        }, [],
+    )
 
-    // useEffect(
-    //     () => {
-    //         pegarUsuario(); 
-    //         TodosUsuarios();
-    //         listaProjetos();
-    //     }, [pegarUsuario], 
-    // )
+    useEffect(
+        () => {
+            pegarUsuario(); 
+            TodosUsuarios();
+            listaProjetos();
+        }, [pegarUsuario], 
+    )
     
 
     return(
-        <>
+        <Container>
             
-            {/* {
+            <Title>Lista de tarefas</Title>
+            {
                 tarefas.map(tarefa => {
                     return(
-                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projetos={projetos} />
+                    <Tarefa tarefa={tarefa} usuarios={listaUsuarios} projetos={projetos} usuarioLogado={usuario} funcaoTarefas={tarefasUsuario}  />
                     )
                 })
-            } */}
-            {/* <Button title="Logout" onPress={() => signOut()}/> */}
-        </>
+            } 
+            <Button title="Logout" onPress={() => signOut()}/>
+        </Container>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Alert } from 'react-native';
 
 import  { Picker } from '@react-native-community/picker';
@@ -9,6 +9,7 @@ import {
     NomeProjeto, 
     BotaoExcluir,
     Botoes,
+    ContainerTexto,
     // FormTarefa,
     // Input_,
     // BotaoAdicionar,
@@ -21,23 +22,30 @@ import api from '../../services/api'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const Tarefa = (props) => {
-    const { tarefa, usuarios, projetos } = props;
+    const { tarefa, usuarios, projetos, usuarioLogado, funcaoTarefas } = props;
     const [usuario, setUsuario] = useState({});
     const [projeto, setProjeto] = useState({});
+    const [load, setLoad] = useState(false)
 
-    const [novaTarefa, setNovaTarefa] = useState("");
-    const [Idprojeto, setIdprojeto] = useState();
-    const [Idusuario, setIdusuario] = useState();
+    // const [novaTarefa, setNovaTarefa] = useState("");
+    // const [Idprojeto, setIdprojeto] = useState();
+    // const [Idusuario, setIdusuario] = useState();
 
-    const atualizarUsuario = async (id) => {
-        console.log(id);
-        tarefa.usuarioId = parseInt(id);
-        try {
-            await api.put(`tarefas/${tarefa.id}`, tarefa);
-            console.log(tarefa);
-        } catch (error) {
-            console.log(error);
-        }
+    const atualizarUsuario = 
+        async (usuario) => {
+            setUsuario(usuario);
+            tarefa.usuarioId = usuario.id;
+            try {
+                await api.put(`tarefas/${tarefa.id}`, tarefa);
+                console.log(tarefa);
+                funcaoTarefas(usuarioLogado);
+            } catch (error) {
+                console.log(error);
+            }
+    }
+
+    const teste = (user) => {
+        console.log(user);
     }
 
     const buscarProjeto = useCallback(
@@ -51,8 +59,8 @@ const Tarefa = (props) => {
 
     useEffect(
         () => {
-           buscarProjeto();
             setUsuario(usuarioLogado);
+            buscarProjeto();
         }, [buscarProjeto]
     )
     
@@ -86,27 +94,27 @@ const Tarefa = (props) => {
     //     }
     // }
 
-    // const excluirTarefa = async(id) => {
+    const excluirTarefa = async(id) => {
         
-    //     try {
+        try {
             
-    //         const response = await api.delete(`tarefas/${id}`);
-    //         Alert.alert("Sucesso!", "Tarefa deletada com sucesso.", [{
-    //             text: "ok"
-    //         }])
+            const response = await api.delete(`tarefas/${id}`);
+            Alert.alert("Sucesso!", "Tarefa deletada com sucesso.", [{
+                text: "ok"
+            }])
+            funcaoTarefas(usuarioLogado);
+            console.log(response)
 
-    //         console.log(response)
-
-    //     } catch (erro) {
+        } catch (erro) {
             
-    //         Alert.alert("Erro!", "Tarefa nao excluida.", [{
-    //             text: "ok"
-    //         }])
+            Alert.alert("Erro!", "Tarefa nao excluida.", [{
+                text: "ok"
+            }])
 
-    //         console.log("Erro: ", erro);
+            console.log("Erro: ", erro);
 
-    //     }
-    // }
+        }
+    }
     
     return(
         <Container>
@@ -124,37 +132,42 @@ const Tarefa = (props) => {
                  </BotaoAdicionar>
              </FormTarefa> */}
 
-            <TituloTarefa>{tarefa.descricao}</TituloTarefa>
+             <ContainerTexto>
+                <TituloTarefa>{tarefa.descricao}</TituloTarefa>
 
-            <NomeProjeto>{projeto.descricao}</NomeProjeto>
+                <NomeProjeto>Projeto: {projeto.descricao}</NomeProjeto>
+             </ContainerTexto>
+
+            
 
          <Botoes>
-             <BotaoConcluido tarefa={tarefa} />
+         
+             <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
             <Picker
-                 selectedValue={usuario.id}
+                 selectedValue={usuario}
                  style={{height: 50, width: 100}}
-                 onValueChange={(itemValue, itemPosition) => {
-                     setUsuario(itemValue);
-                     atualizarUsuario(itemValue);
+                 onValueChange={(itemValue, itemIndex) => {
+                    atualizarUsuario(itemValue);
                  }
                  }>
                  {
-                     usuarios.map(usuario => (
-                         <Picker.Item label={usuario.email} value={usuario.id} />
+                     usuarios.map(user => (
+                         <Picker.Item label={user.email} value={user} />
                      ))
                  }
              </Picker>
-            {
-                 tarefa.concluido ? 
-                 ( 
-                     <BotaoExcluir onPress={() => excluirTarefa(tarefa.id)}>
+
+             {
+                tarefa.concluido ? (
+                <BotaoExcluir onPress={() => excluirTarefa(tarefa.id)}>
                          <MaterialCommunityIcons name="delete-outline" size={25} color="blue" />
                      </BotaoExcluir>
-                ) : (
-                    <BotaoExcluir disabled={true} >
-                     </BotaoExcluir>
-                 )
-             }
+                  
+            ) : (
+                <> 
+                </>
+            )
+        }
          </Botoes>
         </Container>
        
