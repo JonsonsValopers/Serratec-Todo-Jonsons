@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native';
 import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
@@ -22,8 +23,16 @@ const Login = () => {
     const login = async () => {
         try {
             signIn({ email: email, password: password });
+
+            Alert.alert('Sucesso!', 'Login realizado com sucesso!', [{
+                text: 'ok'}])
+
             console.log("Login: ", email + password);
         } catch (error) {
+            
+            Alert.alert('Erro!', 'Houve um erro no seu login tente novamente!', [{
+                text: 'ok'}])
+
             console.log("login: ", error)
         }
     }
