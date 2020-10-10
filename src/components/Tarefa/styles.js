@@ -4,6 +4,7 @@ export const Tarefa = styled.View`
     padding: 20px;
     background-color: #fff;
     display: flex;
+    flex-direction: column;
 `;
 
 export const ContainerTexto = styled.View`

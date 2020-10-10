@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { ActivityIndicator, Alert } from 'react-native';
 import { useAuth } from '../../hooks/auth';
 import { useNavigation } from '@react-navigation/native';
-
 import logo from '../../assets/Logo.png';
 import api from '../../services/api';
 import Cadastro from '../Cadastro'
@@ -44,7 +43,7 @@ const Login = () => {
                 text: 'ok'}])
 
 
-            console.log("login: ", Error.message)
+            console.log("login: ", error)
         }            
     }
     
