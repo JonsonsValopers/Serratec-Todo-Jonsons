@@ -189,18 +189,6 @@ const Projetos = () => {
                 }}
             >
                 
-<<<<<<< HEAD
-                <TouchableHighlight
-                    onPress={() => {
-                    setVisivel(!visivel);
-                    }}
-                >
-                    <Text > teste {visivel?"true":"false"}</Text>
-                </TouchableHighlight>
-
-             </Modal>
-
-=======
             <TouchableHighlight
                 onPress={() => {
                 setVisivel(!visivel);
@@ -215,7 +203,6 @@ const Projetos = () => {
 
             </Modal>
            
->>>>>>> 0afa79b5302b7e1694b82f87860ed9af4c9a00d1
 
         </Container>
 

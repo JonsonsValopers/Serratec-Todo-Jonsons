@@ -21,7 +21,7 @@ const Tarefa = (props) => {
     const { tarefa, usuarios, projetos, usuarioLogado, funcaoTarefas } = props;
     const [usuario, setUsuario] = useState({});
     const [projeto, setProjeto] = useState({});
-    const [load, setLoad] = useState(false)
+    const [load, setLoad] = useState(false);
 
 
     const atualizarUsuario = 
@@ -50,8 +50,8 @@ const Tarefa = (props) => {
 
     useEffect(
         () => {
-            setUsuario(usuarioLogado);
             buscarProjeto();
+            setUsuario(usuarioLogado);
         }, [buscarProjeto]
     )
     
@@ -95,7 +95,7 @@ const Tarefa = (props) => {
          
              <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
             <Picker
-                 selectedValue={usuario}
+                 selectedValue={usuario.id}
                  style={{height: 50, width: 100}}
                  onValueChange={(itemValue, itemIndex) => {
                     atualizarUsuario(itemValue);
@@ -103,7 +103,7 @@ const Tarefa = (props) => {
                  }>
                  {
                      usuarios.map(user => (
-                         <Picker.Item label={user.email} value={user} />
+                         <Picker.Item label={user.email} value={user.id} />
                      ))
                  }
              </Picker>
