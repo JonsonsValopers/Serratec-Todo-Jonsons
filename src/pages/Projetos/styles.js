@@ -57,7 +57,13 @@ export const ProjectAction = styled.View`
 export const ErroMessage = styled.Text``;
 export const TarefaText = styled.Text``;
 
-
+export const TouchableHighlight = styled.TouchableHighlight`
+    border: 1px solid rgba(0,22,150,.2);
+    margin: auto;
+    padding: 100px;
+    background-color: white;
+   
+`;
 
 // export const Task = styled.View`
 //   background-color: #fff;

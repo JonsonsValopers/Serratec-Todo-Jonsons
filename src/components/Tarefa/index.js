@@ -27,7 +27,7 @@ const Tarefa = (props) => {
     const atualizarUsuario = 
         async (usuario) => {
             setUsuario(usuario);
-            tarefa.usuarioId = usuario.id;
+            tarefa.usuarioId = usuario;
             try {
                 await api.put(`tarefas/${tarefa.id}`, tarefa);
                 console.log(tarefa);
@@ -95,7 +95,7 @@ const Tarefa = (props) => {
          
              <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
             <Picker
-                 selectedValue={usuario}
+                 selectedValue={usuario.id}
                  style={{height: 50, width: 100}}
                  onValueChange={(itemValue, itemIndex) => {
                     atualizarUsuario(itemValue);
@@ -103,7 +103,7 @@ const Tarefa = (props) => {
                  }>
                  {
                      usuarios.map(user => (
-                         <Picker.Item label={user.email} value={user} />
+                         <Picker.Item label={user.email} value={user.id} />
                      ))
                  }
              </Picker>
