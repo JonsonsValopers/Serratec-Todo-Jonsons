@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ActivityIndicator } from 'react-native';
 
 import  { Picker } from '@react-native-community/picker';
 
@@ -8,6 +8,7 @@ import {
     TituloTarefa, 
     NomeProjeto, 
     BotaoExcluir,
+    InfoTexto,
     Botoes,
     ContainerTexto
 } from './styles';
@@ -28,6 +29,7 @@ const Tarefa = (props) => {
         async (usuario) => {
             setUsuario(usuario);
             tarefa.usuarioId = usuario;
+            
             try {
                 await api.put(`tarefas/${tarefa.id}`, tarefa);
                 console.log(tarefa);
@@ -50,8 +52,10 @@ const Tarefa = (props) => {
 
     useEffect(
         () => {
+            setLoad(true)
             buscarProjeto();
             setUsuario(usuarioLogado);
+            setLoad(false);
         }, [buscarProjeto]
     )
     
@@ -60,12 +64,11 @@ const Tarefa = (props) => {
         
         try {
             
-            const response = await api.delete(`tarefas/${id}`);
+            await api.delete(`tarefas/${id}`);
             Alert.alert("Sucesso!", "Tarefa deletada com sucesso.", [{
                 text: "ok"
             }])
             funcaoTarefas(usuarioLogado);
-            console.log(response)
 
         } catch (erro) {
             
@@ -79,21 +82,26 @@ const Tarefa = (props) => {
     }
     
     return(
-        <Container>
-
-             
-
+        <Container key={tarefa.id}>
+            {
+                load ? (
+                    <TituloTarefa>Carregando...</TituloTarefa>
+                ) : (
+                    <>
+                    </>
+                )
+            }
              <ContainerTexto>
-                <TituloTarefa>{tarefa.descricao}</TituloTarefa>
+                <TituloTarefa>Tarefa: {tarefa.descricao}</TituloTarefa>
 
                 <NomeProjeto>Projeto: {projeto.descricao}</NomeProjeto>
              </ContainerTexto>
-
             
 
          <Botoes>
-         
-             <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
+            <InfoTexto>Status:</InfoTexto>
+            <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
+            <InfoTexto>Usuario:</InfoTexto>
             <Picker
                  selectedValue={usuario.id}
                  style={{height: 50, width: 100}}
@@ -111,9 +119,8 @@ const Tarefa = (props) => {
              {
                 tarefa.concluido ? (
                 <BotaoExcluir onPress={() => excluirTarefa(tarefa.id)}>
-                         <MaterialCommunityIcons name="delete-outline" size={25} color="blue" />
-                     </BotaoExcluir>
-                  
+                         <MaterialCommunityIcons name="delete-outline" size={25} color="red" />
+                     </BotaoExcluir>                
             ) : (
                 <> 
                 </>
