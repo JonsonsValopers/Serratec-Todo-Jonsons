@@ -31,38 +31,21 @@
       "id": 2
     },
     {
-      "descricao": "Modal 2",
-      "id": 3
+      "descricao": "hbbbbbbbbbbbbbbbbbbbbb",
+      "id": 4
+    },
+    {
+      "descricao": "ta funfando",
+      "id": 5
     }
   ],
   "tarefas": [
     {
-      "descricao": "Tarefa",
-      "concluido": false,
+      "descricao": "",
+      "concluido": true,
       "projetoId": 1,
-      "usuarioId": 1,
-      "id": 1
-    },
-    {
-      "descricao": "Tarefa",
-      "concluido": false,
-      "projetoId": 1,
-      "usuarioId": 1,
+      "usuarioId": 3,
       "id": 2
-    },
-    {
-      "descricao": "Teste",
-      "concluido": false,
-      "projetoId": 1,
-      "usuarioId": 1,
-      "id": 3
-    },
-    {
-      "descricao": "Vaksvs",
-      "concluido": false,
-      "projetoId": 1,
-      "usuarioId": 1,
-      "id": 4
     }
   ]
 }

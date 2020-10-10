@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Tarefas from '../pages/Tarefas';
 import Projetos from '../pages/Projetos';
-import ProjetosDetalhes from '../pages/ProjetosDetalhes'
+
 
 
 const App = createBottomTabNavigator();
@@ -26,19 +26,7 @@ const AppRoutes = () => {
            )
          }} 
       />
-      <App.Screen   
-        name="ProjetosDetalhes" 
-        component={ProjetosDetalhes}
-        options={{
-          tabBarIcon: () => (
-            <MaterialCommunityIcons 
-            name="view-dashboard" 
-            color="#69b6ff" 
-            size={22} 
-            />
-          )
-        }}  
-      />
+      
       <App.Screen 
         name="Tarefas" 
         component={Tarefas}

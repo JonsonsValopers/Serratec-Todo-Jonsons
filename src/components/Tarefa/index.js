@@ -27,7 +27,7 @@ const Tarefa = (props) => {
     const atualizarUsuario = 
         async (usuario) => {
             setUsuario(usuario);
-            tarefa.usuarioId = usuario.id;
+            tarefa.usuarioId = usuario;
             try {
                 await api.put(`tarefas/${tarefa.id}`, tarefa);
                 console.log(tarefa);

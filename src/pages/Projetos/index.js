@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 
-
 import { useNavigation } from '@react-navigation/native';
 
-import ProjetosDetalhes from '../ProjetosDetalhes';
 import
  {
     Container,
@@ -18,12 +16,18 @@ import
     Project,
     ProjectText,
     ProjectAction,
-    TarefaText
+    TarefaText,
+    TouchableHighlight
+    
 } from './styles';
 
-// import Modal from 'react-native-modal';
-import {View, Text, TouchableHighlight, Modal} from 'react-native';
-import Modal_ from '../../components/Modal';
+import {
+    View, 
+    Text,
+    Modal,
+    ScrollView,
+    StyleSheet
+} from 'react-native';
 
 import api from '../../services/api';
 
@@ -35,7 +39,7 @@ const Projetos = () => {
     const [ projetoId, setProjetoId ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
-    const [visivel, setVisivel ] = useState(false);
+    const [ visivel, setVisivel ] = useState(false);
 
     const loadProjects = useCallback(
         async () => {
@@ -61,18 +65,8 @@ const Projetos = () => {
         },[]
     );    
 
-
-    // const pegarTarefasId= useCallback(
-    //     async (projeto) => {
-    //       const response = await api.get(`projetos/${projeto.id}`);
-    //       setTarefas(response.data);
-    //       console.log(resposne.data)
-    //     },[],
-    //   ); 
-
     useEffect(()=> {
         loadProjects();
-        // mostraProjetoID();
     },[])
 
     const handleAddProjects = useCallback(
@@ -130,9 +124,9 @@ const Projetos = () => {
     
     
     return (
-
+        
         <Container>
-           
+        <ScrollView>   
             <FormAddNewProject>
                 <Input
                 value={newProjects}
@@ -165,7 +159,7 @@ const Projetos = () => {
                            name="edit" 
                            size={22} 
                            color="#69b6ff"
-                           onPress={()=> navigation.navigate(ProjetosDetalhes)}
+                           onPress={()=> console.log("hello")}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
@@ -181,6 +175,7 @@ const Projetos = () => {
                 
             </ContainerProjeto>
             <Modal
+            coverScreen={true} 
                 animationType="slide"
                 transparent={true}
                 visible={visivel}
@@ -188,11 +183,13 @@ const Projetos = () => {
                 setVisivel(false)
                 }}
             >
-                
             <TouchableHighlight
                 onPress={() => {
                 setVisivel(!visivel);
-                }}>
+                
+            }}
+           
+            >
                   
             <View key={projetoId.id}>
             
@@ -203,11 +200,10 @@ const Projetos = () => {
 
             </Modal>
            
-
+        </ScrollView>        
         </Container>
-
-        
 
     )
 }
+
 export default Projetos;
