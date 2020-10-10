@@ -28,7 +28,7 @@ const BotaoConcluido = (props) => {
             tarefa.concluido ? (
                 <MaterialCommunityIcons 
                     name="check-circle-outline"
-                    color="#3a3a3a"
+                    color="green"
                     size={22}
                     onPress={() => atualizarTarefa()}
                   />

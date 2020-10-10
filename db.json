@@ -31,8 +31,13 @@
       "id": 2
     },
     {
+<<<<<<< HEAD
       "descricao": "ta funfando",
       "id": 5
+=======
+      "descricao": "Ma que belo",
+      "id": 3
+>>>>>>> b198faa07ec9e3bb7cb64d37db975f51ca2c28d7
     }
   ],
   "tarefas": [
@@ -42,6 +47,27 @@
       "projetoId": 1,
       "usuarioId": 3,
       "id": 2
+    },
+    {
+      "descricao": "teset 2",
+      "concluido": true,
+      "projetoId": 1,
+      "usuarioId": 3,
+      "id": 3
+    },
+    {
+      "descricao": "Tarefa",
+      "concluido": false,
+      "projetoId": 2,
+      "usuarioId": 1,
+      "id": 4
+    },
+    {
+      "descricao": "Validarvo campo",
+      "concluido": false,
+      "projetoId": 1,
+      "usuarioId": 1,
+      "id": 5
     }
   ]
 }

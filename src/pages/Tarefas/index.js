@@ -1,16 +1,20 @@
 import React,{ useState, useEffect, useMemo, useCallback } from 'react';
-import { Text, Alert, Button, ScrollView } from 'react-native';
+import { Alert, Button, ScrollView, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import  { Picker } from '@react-native-community/picker';
 
 import { useAuth } from '../../hooks/auth';
 import api from '../../services/api';
 import Tarefa from '../../components/Tarefa';
+import Header from '../../components/Header';
 
 import { Container, Title,
         FormTarefa,
         Input_,
+        ContainerConta,
+        TextoConta,
         BotaoAdicionar,
+        InfoTexto,
         BotaoText }  from './styles';
 
 const Tarefas = () => {
@@ -19,8 +23,10 @@ const Tarefas = () => {
     const [tarefas, setTarefas] = useState([]);
     const [projetos, setProjetos] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [load, setLoad] = useState(false);
     
     const [novaTarefa, setNovaTarefa] = useState("");
+    const [erroTarefa, setErroTarefa] = useState("");
     const [Idprojeto, setIdprojeto] = useState(Number);
 
     const TodosUsuarios = async () => {
@@ -35,6 +41,7 @@ const Tarefas = () => {
 
     const pegarUsuario = useCallback(
         async () => {
+            setLoad(true);
             try{
                 const user = await AsyncStorage.getItem('@JONSONS:user');
                 console.log(user);
@@ -43,6 +50,8 @@ const Tarefas = () => {
                 tarefasUsuario(JSON.parse(user));
             } catch(error){
                 console.log(error);
+            } finally{
+                setLoad(false);
             }
         }, [], 
     )
@@ -61,18 +70,26 @@ const Tarefas = () => {
 
     const tarefasUsuario = useCallback (
         async (user) => {
+            setLoad(true);
             try {
                 const resposta = await api.get(`usuarios/${user.id}?_embed=tarefas`);
                 console.log(resposta.data.tarefas);
                 setTarefas(resposta.data.tarefas);
             } catch (error) {
                 console.log(error);
+            } finally{
+                setLoad(false);
             }
         }, [],
     )
 
     const adicionarTarefa = async () => {
-
+        if(!novaTarefa) {
+            Alert.alert("Campo vazio", "O campo do nome da tarefa deve estar preenchido!", [{
+                text: "ok"
+            }])
+            return;
+        }
         const params = {
             descricao: novaTarefa,
             concluido: false,
@@ -117,7 +134,7 @@ const Tarefas = () => {
 
     useEffect(
         () => {
-            pegarUsuario(); 
+            pegarUsuario();
             TodosUsuarios();
             listaProjetos();
         }, [pegarUsuario], 
@@ -125,39 +142,49 @@ const Tarefas = () => {
     
 
     return(
+        <>
+        <Header titulo="Suas tarefas" />
         <Container>
 
-    <Text>Concluidas: {qtdConcluidas}</Text>
-    <Text>Total: {qtdTarefas}</Text>
-    <Text>Pendentes: {pendentes}</Text>
+            {
+                load ? (
+                    <TextoConta>Carregando...</TextoConta>
+                ) : (
+                    <ContainerConta>
+                        <TextoConta>Concluidas: {qtdConcluidas}</TextoConta>
+                        <TextoConta>Total: {qtdTarefas}</TextoConta>
+                        <TextoConta>Pendentes: {pendentes}</TextoConta>
+                    </ContainerConta>
+                )
+            }            
             
-            <Title>Lista de tarefas</Title>
-
             <FormTarefa>
                  <Input_ 
                      value={novaTarefa} 
                      onChangeText={(tarefa) => setNovaTarefa(tarefa)}      
-                     placeholder="Nova tarefa..."      
+                     placeholder="Adicione sua nova tarefa..."      
                  />
-                <BotaoAdicionar onPress={() => adicionarTarefa()} >
+                <BotaoAdicionar onPress={adicionarTarefa} >
                      <BotaoText>
                          Adicionar
                      </BotaoText>
                  </BotaoAdicionar>
              </FormTarefa>
+             
              <Picker
                  selectedValue={Idprojeto}
-                 style={{height: 50, width: 100}}
+                 style={{height: 50, width: 150, color: '#3a3a3a'}}
                  onValueChange={(itemValue, itemIndex) => {
                     setIdprojeto(itemValue);
                  }
                  }>
                  {
                      projetos.map(projeto => (
-                         <Picker.Item label={projeto.descricao} value={projeto.id} />
+                         <Picker.Item label={projeto.descricao} value={projeto.id} key={projeto.id}/>
                      ))
                  }
              </Picker>
+           
              <ScrollView>
             {
                 tarefas.map(tarefa => {
@@ -167,8 +194,8 @@ const Tarefas = () => {
                 })
             } 
             </ScrollView>
-            <Button title="Logout" onPress={() => signOut()}/>
         </Container>
+        </>
     )
 }
 
