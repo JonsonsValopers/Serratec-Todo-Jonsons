@@ -1,5 +1,5 @@
 import React,{ useState, useEffect, useMemo, useCallback } from 'react';
-import { Alert, Button, ScrollView } from 'react-native';
+import { Text, Alert, Button, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import  { Picker } from '@react-native-community/picker';
 
@@ -19,7 +19,6 @@ const Tarefas = () => {
     const [tarefas, setTarefas] = useState([]);
     const [projetos, setProjetos] = useState([]);
     const [listaUsuarios, setListaUsuarios] = useState([]);
-    const [req, setReq] = useState(false);
     
     const [novaTarefa, setNovaTarefa] = useState("");
     const [Idprojeto, setIdprojeto] = useState(Number);
@@ -102,6 +101,20 @@ const Tarefas = () => {
         }
     }
 
+    const qtdConcluidas = useMemo(
+        () => {
+            const concluidas = tarefas.filter(tarefa => {
+                return tarefa.concluido === true;
+            })
+
+            return concluidas.length;
+        }, [tarefas],
+     )
+
+     const qtdTarefas = useMemo(() => tarefas.length, [tarefas]);
+
+     const pendentes = useMemo(() => tarefas.length - qtdConcluidas);
+
     useEffect(
         () => {
             pegarUsuario(); 
@@ -113,6 +126,10 @@ const Tarefas = () => {
 
     return(
         <Container>
+
+    <Text>Concluidas: {qtdConcluidas}</Text>
+    <Text>Total: {qtdTarefas}</Text>
+    <Text>Pendentes: {pendentes}</Text>
             
             <Title>Lista de tarefas</Title>
 
