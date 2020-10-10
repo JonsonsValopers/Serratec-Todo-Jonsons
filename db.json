@@ -31,17 +31,13 @@
       "id": 2
     },
     {
-      "descricao": "hbbbbbbbbbbbbbbbbbbbbb",
-      "id": 4
-    },
-    {
       "descricao": "ta funfando",
       "id": 5
     }
   ],
   "tarefas": [
     {
-      "descricao": "",
+      "descricao": "Maque Belo fogone vabene cozi",
       "concluido": true,
       "projetoId": 1,
       "usuarioId": 3,
