@@ -35,7 +35,7 @@ export const Input = styled.TextInput`
 export const Button = styled.TouchableOpacity`
     width: 60%;
     height: 40px;
-    margin-top: 30%;
+    margin-top: 10%;
     background-color: #279FFC;
     border-radius: 5px;
     justify-content: center;
@@ -57,6 +57,8 @@ export const Link = styled.Text`
 `;
 
 export const TextErro = styled.Text`
-    font-size: 10px;
-    color: red;
+    color: rgba(196, 28, 0, .7);
+    font-weight: bold;
+    font-size: 13;
+    margin-top:7px;
 `;

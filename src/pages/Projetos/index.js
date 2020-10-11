@@ -19,8 +19,9 @@ import
     TarefaText,
     TouchableHighlight,
     Text,
-    Header
-    
+    Header,
+    TextTarefa,
+    ViewMap   
 } from './styles';
 
 import {
@@ -39,8 +40,11 @@ const Projetos = () => {
     const [ projects, setProjects ] = useState([]);
     const [ projetoId, setProjetoId ] = useState([]);
     const [ newProjects, setNewProjects ] = useState("");
+    const [ novoProjeto, setNovoProjeto ] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
     const [ visivel, setVisivel ] = useState(false);
+    const [ visivelProjeto, setVisivelProjeto ] = useState(false);
+    const [ tarefas, setTarefas ] = useState([]);
 
     const loadProjects = useCallback(
         async () => {
@@ -57,6 +61,7 @@ const Projetos = () => {
                 setProjetoId(resposta.data);
                 setVisivel(true);
                 console.log("resposta", resposta);
+                tarefas_(idProjeto);
                 
             } catch (error) {
                 console.log("Erros devs nao preparados para usar a api", error);
@@ -101,14 +106,22 @@ const Projetos = () => {
         async (project) => {
             const params = {
                 ...project,
-                descricao: newProjects
+                descricao: novoProjeto
             }
 
-            const response = await api.put(`projetos/${project.id}`, params);
+           try {
+            const response = await api.put(`projetos/${project}`, params);
 
-            console.log("As Tarefas foram concluidas",response);
-
+            console.log("Atualizad",response);
+            console.log("Novo projeto ",novoProjeto);
+            console.log("Id",project)
+            setVisivelProjeto(true);
+            setNovoProjeto("");
+           
             loadProjects();
+           } catch (error) {
+               console.log("Safe familia", error);
+           }
         },[loadProjects],
     );
 
@@ -120,6 +133,20 @@ const Projetos = () => {
 
             loadProjects();
         },[loadProjects],
+    )
+
+    const tarefas_ = useCallback (
+        async (projeto) => {
+        
+            try {
+                const resposta = await api.get(`projetos/${projeto}?_embed=tarefas`);
+                console.log("Projeto / tarefas",resposta.data.tarefas);
+                setTarefas(resposta.data.tarefas);
+                console.log("terfas aqui menosada",tarefas)
+            } catch (error) {
+                console.log(error);
+            } 
+        }, [],
     )
     
     
@@ -133,7 +160,6 @@ const Projetos = () => {
                 onChangeText={text => setNewProjects(text)}
                 placeholder="Digite a nome do novo Projeto"
                 />
-
                 <Button onPress={() => handleAddProjects()}>
                 <ButtonText>
                     Criar
@@ -150,16 +176,22 @@ const Projetos = () => {
                 { projects.map(project => (
                     <Project key={project.id}>
                         <ProjectText
-                        onPress={() => mostraProjetoID(project.id)}>
+                        onPress={() => {
+                            mostraProjetoID(project.id);          
+                            }}>
                             {project.descricao}
+                            
                         </ProjectText> 
 
                         <ProjectAction>
                            <FontAwesome5 
-                           name="tasks" 
-                           size={29} 
+                           name="edit" 
+                           size={27} 
                            color="#fff"
-                           onPress={()=> console.log("hello")}
+                           onPress={()=> {
+                               setVisivelProjeto(true);
+                               setProjetoId(project.id); 
+                            }}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
@@ -172,8 +204,47 @@ const Projetos = () => {
 
                     
                 ))}
-                
+           
             </ContainerProjeto>
+            <Modal
+                coverScreen={true} 
+                    animationType="slide"
+                    transparent={true}
+                    visible={visivelProjeto}
+                    onRequestClose={() => {
+                    setVisivel(false)
+                    }}
+                >     
+                <View key={projetoId.id}>
+                
+                <Header>{projetoId.descricao}</Header> 
+                <TarefaText>   
+                <ViewMap>
+                    <FormAddNewProject>
+                        <Input
+                        value={novoProjeto}
+                        onChangeText={text => setNovoProjeto(text)}
+                        placeholder="Atualizar Projeto"
+                        />
+
+                        <Button onPress={() => handleProjects(projetoId)}>
+                        <ButtonText>
+                            Atualizar
+                        </ButtonText>
+                        </Button>
+                    </FormAddNewProject>
+                </ViewMap>    
+                </TarefaText>
+
+                </View>
+                <TouchableHighlight
+                    onPress={() => {
+                    setVisivelProjeto(!visivelProjeto);  
+                }}>
+                    <Text> Fechar </Text>
+                    </TouchableHighlight>
+            </Modal>
+{/* //----------------------------------------------------------------------------------- */}
             <Modal
             coverScreen={true} 
                 animationType="slide"
@@ -182,23 +253,17 @@ const Projetos = () => {
                 onRequestClose={() => {
                 setVisivel(false)
                 }}
-            >
-            
-                  
+            >     
             <View key={projetoId.id}>
             
-            <Header>{projetoId.descricao}</Header>
-            <TarefaText> 
-                Colabore em um só lugar
-                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
-                mantendo tudo em uma mesma plataforma, 
-                disponível a qualquer momento, de qualquer lugar.
-                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
-                mantendo tudo em uma mesma plataforma, 
-                disponível a qualquer momento, de qualquer lugar.
-                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
-                mantendo tudo em uma mesma plataforma, 
-                disponível a qualquer momento, de qualquer lugar.
+            <Header>{projetoId.descricao}</Header> 
+            <TarefaText>   
+            <ViewMap>
+            {tarefas.map(tarefa => (
+                   <TextTarefa>{tarefa.descricao}</TextTarefa>   
+                   
+                   ))}
+            </ViewMap>    
             </TarefaText>
 
             </View>

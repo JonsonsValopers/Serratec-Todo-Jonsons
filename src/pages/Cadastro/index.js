@@ -21,19 +21,19 @@ const Cadastro = () => {
     const cadastro = async () => { 
 
         if(!email) {
-            setEmailErrado("Preencha esse campo");
+            setEmailErrado("Preencha esse campo!");
             return;
         }
 
         if(!password) {
-            setSenhaErrada("Preencha esse campo");
+            setSenhaErrada("Preencha esse campo!");
             return;
         }
 
         let regexEmail = /^([\w\d^\s]{3,})[@][a-z0-9]{2,10}[.][a-z]{2,6}$/g;
 
         if(!regexEmail.test(email)) {
-            setEmailErrada("Email não informado corretamente");
+            setEmailErrada("Email não informado corretamente!");
             return;
         }
 

@@ -62,6 +62,16 @@ export const ProjectAction = styled.View`
      flex-direction: row;
      
 `;
+export const ViewMap = styled.View`
+     width: 388px;   
+`;
+export const TextTarefa = styled.Text`
+     background-color: rgba(255, 255, 255, .9);
+     margin-top: 13px;
+     padding: 15px;
+     font-size: 16px;
+     font-weight: bold;
+`;
 
 export const ErroMessage = styled.Text`
     color: rgba(196, 28, 0, .7);
@@ -76,7 +86,7 @@ export const ErroMessage = styled.Text`
 
 export const TarefaText = styled.Text`
   
-    background-color: rgba(19, 20, 25, .95);
+    background-color: rgba(19, 20, 25, .7);
     /* justify-content: center;
     align-items: center; */
     width: 100%;

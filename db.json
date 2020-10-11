@@ -23,52 +23,9 @@
   ],
   "projetos": [
     {
-      "descricao": "TEste api",
+      "descricao": "ydftggd",
       "id": 1
-    },
-    {
-      "descricao": "TEste 2",
-      "id": 2
-    },
-    {
-      "descricao": "ta funfando",
-      "id": 5
-    },
-    {
-      "descricao": "teste 5",
-      "id": 6
-    },
-    {
-      "descricao": "react native",
-      "id": 7
-    },
-    {
-      "descricao": "react js",
-      "id": 8
-    },
-    {
-      "descricao": "bla bla",
-      "id": 9
-    },
-    {
-      "descricao": "teste bla",
-      "id": 10
     }
   ],
-  "tarefas": [
-    {
-      "descricao": "Maque Belo fogone vabene cozi",
-      "concluido": true,
-      "projetoId": 1,
-      "usuarioId": 1,
-      "id": 2
-    },
-    {
-      "descricao": "teste",
-      "concluido": true,
-      "projetoId": 1,
-      "usuarioId": 3,
-      "id": 3
-    }
-  ]
+  "tarefas": []
 }
