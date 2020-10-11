@@ -40,6 +40,12 @@ export const InfoTexto = styled.Text`
     font-weight: 400;
 `;
 
+export const ContainerUsuario = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
 export const BotaoExcluir = styled.TouchableOpacity`
     flex: 1;
     height: 40px;

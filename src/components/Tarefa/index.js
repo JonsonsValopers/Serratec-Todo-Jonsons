@@ -8,6 +8,7 @@ import {
     TituloTarefa, 
     NomeProjeto, 
     BotaoExcluir,
+    ContainerUsuario,
     InfoTexto,
     Botoes,
     ContainerTexto
@@ -26,9 +27,9 @@ const Tarefa = (props) => {
 
 
     const atualizarUsuario = 
-        async (usuario) => {
-            setUsuario(usuario);
-            tarefa.usuarioId = usuario;
+        async (id) => {
+            setUsuario(id);
+            tarefa.usuarioId = id;
             
             try {
                 await api.put(`tarefas/${tarefa.id}`, tarefa);
@@ -48,17 +49,6 @@ const Tarefa = (props) => {
         console.log(usuarioLogado.email);
        }, [],
     )
-
-
-    useEffect(
-        () => {
-            setLoad(true)
-            buscarProjeto();
-            setUsuario(usuarioLogado);
-            setLoad(false);
-        }, [buscarProjeto]
-    )
-    
 
     const excluirTarefa = async(id) => {
         
@@ -80,6 +70,15 @@ const Tarefa = (props) => {
 
         }
     }
+
+    useEffect(
+        () => {
+            setLoad(true)
+            buscarProjeto();
+            setUsuario(usuarioLogado);
+            setLoad(false);
+        }, [buscarProjeto]
+    )
     
     return(
         <Container key={tarefa.id}>
@@ -96,15 +95,11 @@ const Tarefa = (props) => {
 
                 <NomeProjeto>Projeto: {projeto.descricao}</NomeProjeto>
              </ContainerTexto>
-            
-
-         <Botoes>
-            <InfoTexto>Status:</InfoTexto>
-            <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
-            <InfoTexto>Usuario:</InfoTexto>
-            <Picker
+             <ContainerUsuario>
+             <InfoTexto>Usuario:</InfoTexto>
+             <Picker
                  selectedValue={usuario.id}
-                 style={{height: 50, width: 100}}
+                 style={{height: 50, width: 200}}
                  onValueChange={(itemValue, itemIndex) => {
                     atualizarUsuario(itemValue);
                  }
@@ -115,6 +110,13 @@ const Tarefa = (props) => {
                      ))
                  }
              </Picker>
+             </ContainerUsuario>
+            
+
+         <Botoes>
+            <InfoTexto>Status:</InfoTexto>
+            <BotaoConcluido tarefa={tarefa} funcaoTarefas={funcaoTarefas} usuarioLogado={usuarioLogado}/>
+            
 
              {
                 tarefa.concluido ? (

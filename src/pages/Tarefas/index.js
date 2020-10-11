@@ -3,7 +3,7 @@ import { Alert, Button, ScrollView, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import  { Picker } from '@react-native-community/picker';
 
-import { useAuth } from '../../hooks/auth';
+
 import api from '../../services/api';
 import Tarefa from '../../components/Tarefa';
 import Header from '../../components/Header';
@@ -14,11 +14,11 @@ import { Container, Title,
         ContainerConta,
         TextoConta,
         BotaoAdicionar,
-        InfoTexto,
+        ContainerProjetos,
+        TextoProjeto,
         BotaoText }  from './styles';
 
 const Tarefas = () => {
-    const { signOut } = useAuth();
     const [usuario, setUsuario] = useState({});
     const [tarefas, setTarefas] = useState([]);
     const [projetos, setProjetos] = useState([]);
@@ -156,7 +156,24 @@ const Tarefas = () => {
                         <TextoConta>Pendentes: {pendentes}</TextoConta>
                     </ContainerConta>
                 )
-            }            
+            }
+            <ContainerProjetos>
+            <TextoProjeto>Projetos: </TextoProjeto>
+            <Picker
+                 selectedValue={Idprojeto}
+                 style={{height: 50, width: 150, color: '#3a3a3a'}}
+                 onValueChange={(itemValue, itemIndex) => {
+                    setIdprojeto(itemValue);
+                 }
+                 }>
+                 {
+                     projetos.map(projeto => (
+                         <Picker.Item label={projeto.descricao} value={projeto.id} key={projeto.id}/>
+                     ))
+                 }
+             </Picker>    
+                
+            </ContainerProjetos>            
             
             <FormTarefa>
                  <Input_ 
@@ -170,20 +187,6 @@ const Tarefas = () => {
                      </BotaoText>
                  </BotaoAdicionar>
              </FormTarefa>
-             
-             <Picker
-                 selectedValue={Idprojeto}
-                 style={{height: 50, width: 150, color: '#3a3a3a'}}
-                 onValueChange={(itemValue, itemIndex) => {
-                    setIdprojeto(itemValue);
-                 }
-                 }>
-                 {
-                     projetos.map(projeto => (
-                         <Picker.Item label={projeto.descricao} value={projeto.id} key={projeto.id}/>
-                     ))
-                 }
-             </Picker>
            
              <ScrollView>
             {

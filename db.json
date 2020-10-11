@@ -52,17 +52,10 @@
     },
     {
       "descricao": "Tarefa",
-      "concluido": false,
+      "concluido": true,
       "projetoId": 2,
       "usuarioId": 1,
       "id": 4
-    },
-    {
-      "descricao": "Validarvo campo",
-      "concluido": false,
-      "projetoId": 1,
-      "usuarioId": 1,
-      "id": 5
     }
   ]
 }
