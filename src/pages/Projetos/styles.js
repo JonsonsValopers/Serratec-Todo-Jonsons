@@ -16,15 +16,17 @@ export const FormAddNewProject = styled.View`
 `;
 export const Input = styled.TextInput`
     flex: 1;
-    width: 100px;
-    height: 40px;
+    width: 150px;
+    height: 50px;
     background-color: #d3d3d3;
     padding: 0 20px;
     border-radius: 5px;
+    color: #ffff;
+    font-size: 18px;
 `;
 export const Button = styled.TouchableOpacity`
-    width: 100px;
-    height: 40px;
+    width: 70px;
+    height: 50px;
     background-color: #69b6ff;
     border-radius: 5px;
     align-items: center;
@@ -41,7 +43,7 @@ export const ContainerProjeto = styled.View`
     margin-top: 40px;
 `;
 export const Project = styled.View`
-    background-color: #fff;
+    background-color: rgba(105,182,255, .9);
     margin-bottom: 10px;
     border-radius: 5px;
     padding: 10px 20px;
@@ -49,20 +51,56 @@ export const Project = styled.View`
     flex-direction: row;
    
 `;
-export const ProjectText = styled.Text``;
+export const ProjectText = styled.Text`
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+
+`;
 export const ProjectAction = styled.View`
      flex-direction: row;
+     
 `;
 
 export const ErroMessage = styled.Text``;
-export const TarefaText = styled.Text``;
+export const TarefaText = styled.Text`
+  
+    background-color: rgba(19, 20, 25, .58);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+    text-transform: uppercase;
+    color: white;
+    margin: auto;
+    margin-bottom: -20px;
+    font-size: 19px;
+    padding: 12px;
+    padding-top: 80px;
+  
+`;
 
 export const TouchableHighlight = styled.TouchableHighlight`
-    border: 1px solid rgba(0,22,150,.2);
-    margin: auto;
-    padding: 100px;
-    background-color: white;
-   
+    padding: 9px;
+    background-color: rgba(105,182,255, .9);
+    margin-top: -3.3px;
+    color: white;
+`;
+export const Text = styled.Text`
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+`;
+export const Header = styled.Text`
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 29px;
+    margin-bottom: -100px;
+    padding-bottom: 20px;
+    background-color: rgba(105,182,255, .9);
 `;
 
 // export const Task = styled.View`

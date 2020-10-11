@@ -17,13 +17,14 @@ import
     ProjectText,
     ProjectAction,
     TarefaText,
-    TouchableHighlight
+    TouchableHighlight,
+    Text,
+    Header
     
 } from './styles';
 
 import {
     View, 
-    Text,
     Modal,
     ScrollView,
     StyleSheet
@@ -48,8 +49,7 @@ const Projetos = () => {
             console.log(response.data);
         }, [],
     );
-
-
+      
     const mostraProjetoID = useCallback(
         async (idProjeto) => {
             try {
@@ -157,14 +157,14 @@ const Projetos = () => {
                         <ProjectAction>
                            <AntDesign 
                            name="edit" 
-                           size={22} 
-                           color="#69b6ff"
+                           size={29} 
+                           color="#fff"
                            onPress={()=> console.log("hello")}
                            />
                            <MaterialCommunityIcons 
                            name="delete-outline"
-                           color="#69b6ff"
-                           size={22}
+                           color="#fff"
+                           size={29}
                            onPress={()=> removeProjects(project)}
                            />
                         </ProjectAction>
@@ -183,21 +183,26 @@ const Projetos = () => {
                 setVisivel(false)
                 }}
             >
-            <TouchableHighlight
-                onPress={() => {
-                setVisivel(!visivel);
-                
-            }}
-           
-            >
+            
                   
             <View key={projetoId.id}>
             
-            <TarefaText>{projetoId.descricao}</TarefaText>
-                <Text> Fechar </Text>
-                </View>
-            </TouchableHighlight>
+            <Header>{projetoId.descricao}</Header>
+            <TarefaText> 
+                Colabore em um só lugar
+                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
+                mantendo tudo em uma mesma plataforma, 
+                disponível a qualquer momento, de qualquer lugar
+            </TarefaText>
 
+            </View>
+            <TouchableHighlight
+                onPress={() => {
+                setVisivel(!visivel);  
+            }}>
+                <Text> Fechar </Text>
+                </TouchableHighlight>
+     
             </Modal>
            
         </ScrollView>        
