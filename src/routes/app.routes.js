@@ -1,5 +1,5 @@
 import React from 'react';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome5  } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Tarefas from '../pages/Tarefas';
@@ -32,8 +32,8 @@ const AppRoutes = () => {
         component={Tarefas}
         options={{
           tabBarIcon: () => (
-            <MaterialCommunityIcons 
-            name="view-dashboard" 
+            <FontAwesome5 
+            name="tasks" 
             color="#69b6ff" 
             size={22}
             />

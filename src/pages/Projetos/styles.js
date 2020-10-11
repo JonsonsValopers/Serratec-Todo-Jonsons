@@ -21,8 +21,9 @@ export const Input = styled.TextInput`
     background-color: #d3d3d3;
     padding: 0 20px;
     border-radius: 5px;
-    color: #ffff;
+    color: rgb(74, 71, 71);
     font-size: 18px;
+    font-weight: bold;
 `;
 export const Button = styled.TouchableOpacity`
     width: 70px;
@@ -62,12 +63,22 @@ export const ProjectAction = styled.View`
      
 `;
 
-export const ErroMessage = styled.Text``;
+export const ErroMessage = styled.Text`
+    color: rgba(196, 28, 0, .7);
+    font-weight: bold;
+    font-size: 13;
+    text-transform: uppercase;
+    margin-left: 2px;
+    margin-top: 12px;
+    margin-bottom: -12px;
+`;
+
+
 export const TarefaText = styled.Text`
   
-    background-color: rgba(19, 20, 25, .58);
-    justify-content: center;
-    align-items: center;
+    background-color: rgba(19, 20, 25, .95);
+    /* justify-content: center;
+    align-items: center; */
     width: 100%;
     height: 90%;
     text-transform: uppercase;
@@ -76,7 +87,7 @@ export const TarefaText = styled.Text`
     margin-bottom: -20px;
     font-size: 19px;
     padding: 12px;
-    padding-top: 80px;
+    /* padding-top: 180px; */
   
 `;
 

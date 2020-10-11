@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -155,8 +155,8 @@ const Projetos = () => {
                         </ProjectText> 
 
                         <ProjectAction>
-                           <AntDesign 
-                           name="edit" 
+                           <FontAwesome5 
+                           name="tasks" 
                            size={29} 
                            color="#fff"
                            onPress={()=> console.log("hello")}
@@ -192,7 +192,13 @@ const Projetos = () => {
                 Colabore em um só lugar
                 Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
                 mantendo tudo em uma mesma plataforma, 
-                disponível a qualquer momento, de qualquer lugar
+                disponível a qualquer momento, de qualquer lugar.
+                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
+                mantendo tudo em uma mesma plataforma, 
+                disponível a qualquer momento, de qualquer lugar.
+                Evite os extensos agrupamentos de mensagens e arquivos desaparecidos, 
+                mantendo tudo em uma mesma plataforma, 
+                disponível a qualquer momento, de qualquer lugar.
             </TarefaText>
 
             </View>

@@ -15,6 +15,7 @@ export const InputLogin = styled.TextInput`
   background-color: #fff;
   padding: 0 20px;
   border-radius: 5px;
+  color: #3a3a3a;
 `;
 
 export const ButtonSubmit = styled.TouchableOpacity`
@@ -38,7 +39,6 @@ export const ButtonSignup = styled.TouchableOpacity`
 
 `;
 
-
 export const ButtonText = styled.Text`
   color: #fff;
   font-size: 18px;
@@ -51,6 +51,8 @@ export const Imagem = styled.Image`
 `;
 
 export const TextErro = styled.Text`
-    font-size: 10px;
-    color: red;
+  color: rgba(196, 28, 0, .7);
+  font-weight: bold;
+  font-size: 13;
+  margin-top:7px;
 `;
