@@ -32,22 +32,37 @@ export const FormTarefa = styled.View`
 `;
 
 export const Input_ = styled.TextInput`
-    width: 70%;
+    flex: 2;
     height: 40px;
     background-color: #fff;
+    color: #3a3a3a;
     padding: 10px;
+    margin-top: 20px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 `;
 
 export const BotaoAdicionar = styled.TouchableOpacity`
     flex: 1;
+    height: 40px;
     background-color: #69b6ff;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    margin-top: 20px;
 
     justify-content: center;
     align-items: center;
+`;
+
+export const ContainerProjetos = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const TextoProjeto = styled.Text`
+    font-size: 20px;
+    font-weight: bold;
 `;
 
 export const InfoTexto = styled.Text`

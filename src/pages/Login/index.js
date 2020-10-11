@@ -21,7 +21,7 @@ const Login = () => {
     const login = async () => {
 
         if(!email) {
-            setEmailErrado("Preencha esse campo!")
+            setEmailErrado("Preencha esse campo!");
             return;
         }
 
@@ -36,11 +36,11 @@ const Login = () => {
             console.log("Login: ", email + password);
 
             Alert.alert('Sucesso!', 'Login realizado com sucesso!', [{
-                text: 'ok'}])
+                text: 'ok'}]);
                 
         } catch (error) {
-            Alert.alert('Erro!', 'Houve um erro no seu login tente novamente!', [{
-                text: 'ok'}])
+            Alert.alert('Erro!', error, [{
+                text: 'ok'}]);
 
 
             console.log("login: ", error)

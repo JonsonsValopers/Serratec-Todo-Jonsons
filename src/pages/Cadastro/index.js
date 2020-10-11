@@ -21,7 +21,7 @@ const Cadastro = () => {
     const cadastro = async () => { 
 
         if(!email) {
-            setEmailErrado("Preencha esse campo")
+            setEmailErrado("Preencha esse campo");
             return;
         }
 
