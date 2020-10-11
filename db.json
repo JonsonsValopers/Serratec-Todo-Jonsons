@@ -69,16 +69,6 @@
       "projetoId": 1,
       "usuarioId": 3,
       "id": 3
-<<<<<<< HEAD
-=======
-    },
-    {
-      "descricao": "Tarefa",
-      "concluido": true,
-      "projetoId": 2,
-      "usuarioId": 1,
-      "id": 4
->>>>>>> 6e35142b66ce346ba14f52a69cbb16298b55e890
     }
   ]
 }

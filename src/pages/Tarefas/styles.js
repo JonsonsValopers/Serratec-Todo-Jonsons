@@ -33,18 +33,21 @@ export const FormTarefa = styled.View`
 
 export const Input_ = styled.TextInput`
     flex: 2;
-    height: 40px;
-    background-color: #fff;
-    color: #3a3a3a;
     padding: 10px;
     margin-top: 20px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+
+    width: 150px;
+    height: 50px;
+    background-color: #d3d3d3;
+    color: rgb(74, 71, 71);
+    font-size: 18px;
+    font-weight: bold;
 `;
 
 export const BotaoAdicionar = styled.TouchableOpacity`
     flex: 1;
-    height: 40px;
     background-color: #69b6ff;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -52,6 +55,11 @@ export const BotaoAdicionar = styled.TouchableOpacity`
 
     justify-content: center;
     align-items: center;
+    width: 70px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    
 `;
 
 export const ContainerProjetos = styled.View`
