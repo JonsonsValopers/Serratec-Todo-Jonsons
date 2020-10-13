@@ -1,8 +1,8 @@
 import React,{ useState, useEffect, useMemo, useCallback } from 'react';
 import { Alert, Button, ScrollView, ActivityIndicator } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-community/async-storage';
 import  { Picker } from '@react-native-community/picker';
-
 
 import api from '../../services/api';
 import Tarefa from '../../components/Tarefa';
@@ -19,6 +19,7 @@ import { Container, Title,
         BotaoText }  from './styles';
 
 const Tarefas = () => {
+    const emFoco = useIsFocused();
     const [usuario, setUsuario] = useState({});
     const [tarefas, setTarefas] = useState([]);
     const [projetos, setProjetos] = useState([]);
@@ -65,7 +66,7 @@ const Tarefas = () => {
             } catch (error) {
                 console.log(error);
             }
-        }
+        }, [],
     )
 
     const tarefasUsuario = useCallback (
@@ -137,9 +138,11 @@ const Tarefas = () => {
             pegarUsuario();
             TodosUsuarios();
             listaProjetos();
-        }, [pegarUsuario], 
+        }, [pegarUsuario, emFoco], 
     )
     
+// só vou aumentar mais um pouco
+// show achoq ue ja ta top assim, sim
 
     return(
         <>
@@ -161,7 +164,7 @@ const Tarefas = () => {
             <TextoProjeto>Projetos: </TextoProjeto>
             <Picker
                  selectedValue={Idprojeto}
-                 style={{height: 50, width: 150, color: '#3a3a3a'}}
+                 style={{height: 50, width: 250, color: '#3a3a3a'}}
                  onValueChange={(itemValue, itemIndex) => {
                     setIdprojeto(itemValue);
                  }

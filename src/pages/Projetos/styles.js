@@ -84,7 +84,7 @@ export const ErroMessage = styled.Text`
 `;
 
 
-export const TarefaText = styled.Text`
+export const TarefaText = styled.View`
   
     background-color: rgba(19, 20, 25, .7);
     /* justify-content: center;
@@ -99,6 +99,40 @@ export const TarefaText = styled.Text`
     padding: 12px;
     /* padding-top: 180px; */
   
+`;
+
+export const TarefaTextAtualizar = styled.View`
+
+background-color: rgba(19, 20, 25, .7);
+    /* justify-content: center;
+    align-items: center; */
+    width: 100%;
+    height: 130px;
+    text-transform: uppercase;
+    color: white;
+    margin: auto;
+    margin-bottom: -20px;
+    font-size: 19px;
+    padding: 12px;
+    /* padding-top: 180px; */
+`;
+export const TouchableHighlightAtualizar = styled.TouchableHighlight`
+    padding: 9px;
+    background-color: rgba(105,182,255,.98);
+    margin-top: 14.3px;
+    color: white;
+`;
+export const TextAtualizar = styled.Text`
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+`;
+export const TextAtualizarProjeto = styled.Text`
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
 `;
 
 export const TouchableHighlight = styled.TouchableHighlight`
@@ -123,6 +157,18 @@ export const Header = styled.Text`
     padding-bottom: 20px;
     background-color: rgba(105,182,255, .9);
 `;
+
+export const ViewAtualizar = styled.View`
+        margin: auto;
+`;
+export const HeaderAtualizar = styled.Text`
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+    
+    background-color: rgba(105,182,255, .9);
+`;
+
 
 // export const Task = styled.View`
 //   background-color: #fff;

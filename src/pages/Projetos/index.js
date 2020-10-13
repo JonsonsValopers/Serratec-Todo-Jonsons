@@ -21,7 +21,13 @@ import
     Text,
     Header,
     TextTarefa,
-    ViewMap   
+    ViewMap,
+    TarefaTextAtualizar ,
+    ViewAtualizar,
+    TouchableHighlightAtualizar,
+    TextAtualizar,
+    HeaderAtualizar,
+    TextAtualizarProjeto  
 } from './styles';
 
 import {
@@ -38,9 +44,10 @@ const Projetos = () => {
     const navigation = useNavigation();
    
     const [ projects, setProjects ] = useState([]);
-    const [ projetoId, setProjetoId ] = useState([]);
+    const [ projetoId, setProjetoId ] = useState('');
     const [ newProjects, setNewProjects ] = useState("");
-    const [ novoProjeto, setNovoProjeto ] = useState("");
+    // const [ novoProjeto, setNovoProjeto ] = useState("");
+    const [projetoAtualizado, setProjetoAtualizado] = useState("");
     const [ errorMessage, setErroMessage ] = useState("");
     const [ visivel, setVisivel ] = useState(false);
     const [ visivelProjeto, setVisivelProjeto ] = useState(false);
@@ -103,26 +110,27 @@ const Projetos = () => {
 
 
     const handleProjects = useCallback(
-        async (project) => {
-            const params = {
-                ...project,
-                descricao: novoProjeto
-            }
-
-           try {
-            const response = await api.put(`projetos/${project}`, params);
+        async (id, descricao) => {
+            
+            try {
+                console.log(projetoAtualizado);
+                const params = {
+                    id: id,
+                    descricao: descricao
+                }
+            const response = await api.put(`projetos/${id}`, params);
 
             console.log("Atualizad",response);
-            console.log("Novo projeto ",novoProjeto);
-            console.log("Id",project)
-            setVisivelProjeto(true);
-            setNovoProjeto("");
+            console.log("Novo projeto ", descricao);
+            console.log("Id",id)
            
             loadProjects();
            } catch (error) {
                console.log("Safe familia", error);
+           } finally{
+            setProjetoAtualizado("");
            }
-        },[loadProjects],
+        },[],
     );
 
     const removeProjects = useCallback (
@@ -206,45 +214,7 @@ const Projetos = () => {
                 ))}
            
             </ContainerProjeto>
-            <Modal
-                coverScreen={true} 
-                    animationType="slide"
-                    transparent={true}
-                    visible={visivelProjeto}
-                    onRequestClose={() => {
-                    setVisivel(false)
-                    }}
-                >     
-                <View key={projetoId.id}>
-                
-                <Header>{projetoId.descricao}</Header> 
-                <TarefaText>   
-                <ViewMap>
-                    <FormAddNewProject>
-                        <Input
-                        value={novoProjeto}
-                        onChangeText={text => setNovoProjeto(text)}
-                        placeholder="Atualizar Projeto"
-                        />
-
-                        <Button onPress={() => handleProjects(projetoId)}>
-                        <ButtonText>
-                            Atualizar
-                        </ButtonText>
-                        </Button>
-                    </FormAddNewProject>
-                </ViewMap>    
-                </TarefaText>
-
-                </View>
-                <TouchableHighlight
-                    onPress={() => {
-                    setVisivelProjeto(!visivelProjeto);  
-                }}>
-                    <Text> Fechar </Text>
-                    </TouchableHighlight>
-            </Modal>
-{/* //----------------------------------------------------------------------------------- */}
+{/* //----------------------------------------------------------------------------------------------------- */}
             <Modal
             coverScreen={true} 
                 animationType="slide"
@@ -255,17 +225,18 @@ const Projetos = () => {
                 }}
             >     
             <View key={projetoId.id}>
-            
             <Header>{projetoId.descricao}</Header> 
-            <TarefaText>   
+            <TarefaText> 
+                
+                <ScrollView>
             <ViewMap>
             {tarefas.map(tarefa => (
                    <TextTarefa>{tarefa.descricao}</TextTarefa>   
                    
                    ))}
             </ViewMap>    
+                   </ScrollView>
             </TarefaText>
-
             </View>
             <TouchableHighlight
                 onPress={() => {
@@ -273,7 +244,47 @@ const Projetos = () => {
             }}>
                 <Text> Fechar </Text>
                 </TouchableHighlight>
-     
+               
+            </Modal>
+{/* ------------------------------------Meu ta aqui em baixo gaby----------------------------------------------------- */}
+            <Modal
+                coverScreen={true} 
+                    animationType="slide"
+                    transparent={true}
+                    visible={visivelProjeto}
+                    onRequestClose={() => {
+                    setVisivel(false)
+                    }}
+                >     
+                <ViewAtualizar>
+                
+                <HeaderAtualizar>Atualizando Projeto</HeaderAtualizar>
+                <TarefaTextAtualizar>   
+                <ViewMap>
+                    <FormAddNewProject>
+                        <Input
+                        value={projetoAtualizado}
+                        onChangeText={text => setProjetoAtualizado(text)}
+                        placeholder="Atualizar Projeto"
+                        />
+                        <Button onPress={() => handleProjects(projetoId, projetoAtualizado)}>
+                        <ButtonText>
+                            Atualizar
+                        </ButtonText>
+                        </Button>
+                    </FormAddNewProject>
+                </ViewMap>
+
+                <TouchableHighlightAtualizar
+                        onPress={() => {
+                        setVisivelProjeto(!visivelProjeto);  
+                    }}>
+                        <TextAtualizarProjeto> Fechar </TextAtualizarProjeto>
+                        </TouchableHighlightAtualizar>    
+                </TarefaTextAtualizar>
+
+                </ViewAtualizar>
+               
             </Modal>
            
         </ScrollView>        

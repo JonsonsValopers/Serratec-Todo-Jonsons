@@ -11,8 +11,8 @@ export const Tarefa = styled.View`
 
 export const ContainerTexto = styled.View`
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
 `;
 
 export const TituloTarefa = styled.Text`
@@ -29,8 +29,8 @@ export const NomeProjeto = styled.Text`
 export const Botoes = styled.View`
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: flex-start;
+    
 
 `;
 
@@ -47,9 +47,7 @@ export const ContainerUsuario = styled.View`
 `;
 
 export const BotaoExcluir = styled.TouchableOpacity`
-    flex: 1;
     height: 40px;
-    justify-content: center;
-    align-items: center;
+    margin-left: 15px;
 `;
 

@@ -99,7 +99,7 @@ const Tarefa = (props) => {
              <InfoTexto>Usuario:</InfoTexto>
              <Picker
                  selectedValue={usuario.id}
-                 style={{height: 50, width: 200}}
+                 style={{height: 50, width: 220}}
                  onValueChange={(itemValue, itemIndex) => {
                     atualizarUsuario(itemValue);
                  }
